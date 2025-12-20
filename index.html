@@ -5,56 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARAMAITI SCANNER LIVE</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --text: #ffffff; }
-        body { background: var(--bg); color: var(--text); font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
-        .header { font-size: 22px; font-weight: bold; color: #ffcc00; margin-bottom: 5px; }
-        .sub-header { font-size: 14px; margin-bottom: 20px; opacity: 0.8; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 500px; margin: auto; }
-        .card { background: var(--card); padding: 15px; border-radius: 12px; border: 1px solid #30363d; position: relative; }
-        .timer-box { position: relative; width: 80px; height: 80px; margin: auto; }
-        svg { transform: rotate(-90deg); width: 80px; height: 80px; }
-        circle { fill: none; stroke-width: 8; stroke-linecap: round; transition: all 1s ease; }
+        :root { --bg: #0d1117; --card: #161b22; --text: #ffffff; --gold: #ffcc00; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; text-align: center; margin: 0; padding: 10px; }
+        .header { font-size: 24px; font-weight: bold; color: var(--gold); margin-top: 10px; }
+        .provider-title { background: linear-gradient(90deg, #30363d, #161b22); color: var(--gold); padding: 8px; margin: 20px 0 10px 0; border-radius: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase; border-left: 4px solid var(--gold); }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: auto; }
+        .card { background: var(--card); padding: 12px; border-radius: 12px; border: 1px solid #30363d; }
+        .timer-box { position: relative; width: 70px; height: 70px; margin: auto; }
+        svg { transform: rotate(-90deg); width: 70px; height: 70px; }
+        circle { fill: none; stroke-width: 7; stroke-linecap: round; transition: all 1s ease; }
         .bg-c { stroke: #21262d; }
-        .pusing { stroke: #ffcc00; stroke-dasharray: 0, 201; }
-        .percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; font-size: 16px; }
-        .name { font-size: 12px; margin-top: 10px; font-weight: bold; }
-        .btn-daftar { display: block; width: 100%; max-width: 400px; margin: 20px auto; padding: 12px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; }
+        .pusing { stroke: var(--gold); stroke-dasharray: 0, 188; }
+        .percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; font-size: 14px; }
+        .name { font-size: 11px; margin-top: 8px; font-weight: bold; color: #c9d1d9; }
+        .btn-daftar { display: block; width: 100%; max-width: 400px; margin: 15px auto; padding: 12px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <div class="header">🍻 ARAMAITI SCANNER 🍻</div>
-    <div class="sub-header">SERVER RTP LIVE NAKWIN ACTIVE</div>
+    <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-daftar">🎰 DAFTAR & CLAIM 140% BONUS</a>
 
-    <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-daftar">🎰 DAFTAR & CLAIM 140%</a>
+    <div class="provider-title">🔥 PRAGMATIC PLAY</div>
+    <div class="grid" id="pragmatic-grid"></div>
 
-    <div class="grid">
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Gates of Olympus</div></div>
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Sweet Bonanza</div></div>
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Super Ace</div></div>
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Fortune Gems</div></div>
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Mahjong Ways 2</div></div>
-        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Lucky Neko</div></div>
-    </div>
+    <div class="provider-title">💎 JILI GAMES</div>
+    <div class="grid" id="jili-grid"></div>
+
+    <div class="provider-title">✨ BNG (BOOONGO)</div>
+    <div class="grid" id="bng-grid"></div>
 
     <script>
+        const pragmatic = ["Gates of Olympus", "Sweet Bonanza", "Starlight Princess", "Sugar Rush", "Wisdom of Athena", "Gems Bonanza"];
+        const jili = ["Super Ace", "Fortune Gems", "Boxing King", "Golden Empire", "Ali Baba", "Jungle King"];
+        const bng = ["Sun of Egypt 3", "Hit the Gold", "Black Wolf", "Magic Apple 2"];
+
+        function createCards(list, elementId) {
+            const grid = document.getElementById(elementId);
+            list.forEach(game => {
+                grid.innerHTML += `
+                    <div class="card">
+                        <div class="timer-box">
+                            <svg><circle class="bg-c" cx="35" cy="35" r="30"></circle><circle class="pusing" cx="35" cy="35" r="30"></circle></svg>
+                            <div class="percent">0%</div>
+                        </div>
+                        <div class="name">${game}</div>
+                    </div>`;
+            });
+        }
+
+        createCards(pragmatic, 'pragmatic-grid');
+        createCards(jili, 'jili-grid');
+        createCards(bng, 'bng-grid');
+
         function updateRTP() {
             const cards = document.querySelectorAll('.card');
             cards.forEach(card => {
                 const percentText = card.querySelector('.percent');
                 const circle = card.querySelector('.pusing');
-                // Jana nilai random antara 30% hingga 98%
-                let val = Math.floor(Math.random() * (98 - 30 + 1)) + 30;
-                let offset = (val / 100) * 201;
+                let val = Math.floor(Math.random() * (98 - 38 + 1)) + 38; // Random 38% - 98%
+                let offset = (val / 100) * 188; // 188 is circumference for R=30
                 percentText.innerText = val + "%";
-                circle.style.strokeDasharray = `${offset}, 201`;
-                // Tukar warna ikut peratusan
-                if(val > 80) circle.style.stroke = "#00ff00"; // Hijau
-                else if(val > 50) circle.style.stroke = "#ffcc00"; // Kuning
-                else circle.style.stroke = "#ff416c"; // Merah
+                circle.style.strokeDasharray = `${offset}, 188`;
+                if(val > 80) circle.style.stroke = "#00ff00"; 
+                else if(val > 60) circle.style.stroke = "#ffcc00"; 
+                else circle.style.stroke = "#ff416c";
             });
         }
-        setInterval(updateRTP, 5000); // Kemas kini setiap 5 saat
+
+        setInterval(updateRTP, 8000); // Berubah setiap 8 saat
         updateRTP();
     </script>
 </body>
