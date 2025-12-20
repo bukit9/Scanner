@@ -1,97 +1,59 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARAMAITI HUB - VIP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body { 
-            background: #000; color: #fff; font-family: 'Poppins', sans-serif; 
-            margin: 0; padding: 0; overflow-x: hidden;
+            background: #000; color: #fff; font-family: sans-serif; 
+            margin: 0; padding: 0; text-align: center;
         }
-        /* Header dengan Gambar Amoi Menarik */
-        .amoi-header {
-            width: 100%; height: 350px;
-            background: url('https://images.pexels.com/photos/1382731/pexels-photo-1382731.jpeg?auto=compress&cs=tinysrgb&w=800');
-            background-size: cover; background-position: center top;
-            position: relative; border-bottom: 4px solid #ffcc00;
+        /* Bahagian Gambar Amoi Pilihan Bos */
+        .hero-section {
+            width: 100%; height: 400px;
+            background: url('https://raw.githubusercontent.com/bukit9/Scanner/main/Gemini_Generated_Image_etuqc9etuqc9etuq.jpg');
+            background-size: cover; background-position: center;
+            position: relative; border-bottom: 3px solid #ffcc00;
         }
         .vignette {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, #000 100%);
+            background: linear-gradient(to bottom, transparent 60%, #000 100%);
         }
-        .brand {
-            position: relative; margin-top: -60px; z-index: 10;
+        .content { padding: 20px; max-width: 400px; margin: auto; }
+        .title { 
+            font-size: 35px; font-weight: bold; color: #ffcc00; 
+            margin-top: -40px; position: relative; text-shadow: 2px 2px 10px #000;
         }
-        .brand h1 { 
-            font-family: 'Bebas Neue', cursive; font-size: 55px; color: #ffcc00; 
-            margin: 0; letter-spacing: 4px; text-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
+        .btn {
+            display: block; background: #1a1a1a; border: 1px solid #333;
+            padding: 18px; margin-bottom: 12px; border-radius: 12px;
+            color: white; text-decoration: none; font-weight: bold;
+            transition: 0.3s;
         }
-        .container { padding: 25px; max-width: 450px; margin: auto; }
-        
-        /* Butang Gaya Baru */
-        .link-card {
-            background: linear-gradient(90deg, #161b22, #0d1117);
-            border: 1px solid rgba(255, 204, 0, 0.3);
-            padding: 20px; border-radius: 15px; margin-bottom: 15px;
-            display: flex; align-items: center; text-decoration: none; color: white;
-            transition: 0.3s; position: relative; overflow: hidden;
-        }
-        .link-card:hover { border-color: #ffcc00; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2); }
-        .icon-box { font-size: 24px; margin-right: 15px; }
-        .btn-title { font-weight: bold; font-size: 17px; display: block; }
-        .btn-sub { font-size: 11px; color: #8b949e; }
-
-        /* Butang Daftar Berapi */
-        .register-btn {
-            background: linear-gradient(45deg, #ff0000, #ffcc00);
-            color: #000; padding: 22px; border-radius: 50px;
-            font-weight: 900; font-size: 20px; text-decoration: none;
-            display: block; margin-top: 25px; text-transform: uppercase;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
-            animation: glow 1.5s infinite alternate;
-        }
-        @keyframes glow {
-            from { box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); }
-            to { box-shadow: 0 0 25px rgba(255, 204, 0, 0.8); }
+        .btn:hover { border-color: #ffcc00; background: #222; }
+        .btn-gold {
+            background: linear-gradient(45deg, #ffcc00, #b89600);
+            color: #000; border: none; font-size: 18px; margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="amoi-header">
+    <div class="hero-section">
         <div class="vignette"></div>
     </div>
 
-    <div class="brand">
-        <h1>ARAMAITI HUB</h1>
-        <p style="font-size: 12px; letter-spacing: 2px; color: #aaa;">OFFICIAL VIP ACCESS</p>
-    </div>
+    <div class="content">
+        <h1 class="title">ARAMAITI HUB</h1>
+        <p style="color: #888; margin-bottom: 30px;">Scanner RTP & Result 4D Terpantas</p>
 
-    <div class="container">
-        <a href="https://bukit9.github.io/Scanner/index.html" class="link-card">
-            <div class="icon-box">⚡</div>
-            <div style="text-align: left;">
-                <span class="btn-title">SCANNER RTP LIVE</span>
-                <span class="btn-sub">Strategi Menang Slot Hari Ini</span>
-            </div>
-        </a>
-
-        <a href="https://m.4d88.com/" class="link-card">
-            <div class="icon-box">🔮</div>
-            <div style="text-align: left;">
-                <span class="btn-title">4D LIVE RESULT</span>
-                <span class="btn-sub">Keputusan Terpantas & Tepat</span>
-            </div>
-        </a>
-
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="register-btn">
-            🚀 DAFTAR & CLAIM BONUS
-        </a>
-
-        <p style="margin-top: 40px; font-size: 10px; color: #444;">18+ | BERMAIN DENGAN BIJAK | © 2025 ARAMAITI</p>
+        <a href="https://bukit9.github.io/Scanner/index.html" class="btn">🟡 SCANNER RTP LIVE</a>
+        <a href="https://m.4d88.com/" class="btn">📊 4D LIVE RESULT</a>
+        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn btn-gold">🔥 DAFTAR & CLAIM 140%</a>
+        
+        <p style="font-size: 10px; color: #444; margin-top: 40px;">© 2025 ARAMAITI OFFICIAL</p>
     </div>
 
 </body>
-</html>
+</html>      
