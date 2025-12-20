@@ -10,7 +10,7 @@
         .header { font-size: 24px; font-weight: bold; color: var(--gold); margin-top: 10px; }
         .provider-title { background: linear-gradient(90deg, #30363d, #161b22); color: var(--gold); padding: 10px; margin: 20px 0 10px 0; border-radius: 5px; font-weight: bold; font-size: 14px; text-transform: uppercase; border-left: 4px solid var(--gold); }
         .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 500px; margin: auto; min-height: 50px; }
-        .card { background: var(--card); padding: 12px; border-radius: 12px; border: 1px solid #30363d; transition: all 0.5s ease; }
+        .card { background: var(--card); padding: 12px; border-radius: 12px; border: 1px solid #30363d; }
         .timer-box { position: relative; width: 70px; height: 70px; margin: auto; }
         svg { transform: rotate(-90deg); width: 70px; height: 70px; }
         circle { fill: none; stroke-width: 7; stroke-linecap: round; transition: all 1s ease; }
@@ -54,7 +54,6 @@
             }
         }
 
-        // Jalankan bina kotak dulu
         initCards('pragmatic-grid', 6);
         initCards('jili-grid', 6);
         initCards('bng-grid', 4);
