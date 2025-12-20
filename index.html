@@ -5,43 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARAMAITI SCANNER LIVE</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --accent: #58a6ff; --gold: #f1c40f; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 15px; text-align: center; }
-        .header { font-size: 22px; font-weight: bold; color: var(--gold); margin-bottom: 5px; }
-        .sub-btn { background: linear-gradient(180deg, #ff4500, #b22222); color: white; padding: 12px 25px; text-decoration: none; border-radius: 8px; display: inline-block; margin: 15px 0; font-weight: bold; width: 85%; }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-        .card { background: var(--card); border-radius: 12px; padding: 10px; border: 1px solid #30363d; }
-        .timer-box { position: relative; width: 70px; height: 70px; margin: 0 auto 10px; }
-        svg { transform: rotate(-90deg); width: 70px; height: 70px; }
-        circle { fill: none; stroke-width: 6; stroke-linecap: round; }
+        :root { --bg: #0d1117; --card: #161b22; --text: #ffffff; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; text-align: center; margin: 0; padding: 20px; }
+        .header { font-size: 22px; font-weight: bold; color: #ffcc00; margin-bottom: 5px; }
+        .sub-header { font-size: 14px; margin-bottom: 20px; opacity: 0.8; }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 500px; margin: auto; }
+        .card { background: var(--card); padding: 15px; border-radius: 12px; border: 1px solid #30363d; position: relative; }
+        .timer-box { position: relative; width: 80px; height: 80px; margin: auto; }
+        svg { transform: rotate(-90deg); width: 80px; height: 80px; }
+        circle { fill: none; stroke-width: 8; stroke-linecap: round; transition: all 1s ease; }
         .bg-c { stroke: #21262d; }
-        .pusing { stroke-dasharray: 201; animation: rotate 2s linear infinite; }
-        @keyframes rotate { 0% { transform: rotate(-90deg); } 100% { transform: rotate(270deg); } }
-        .percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 14px; font-weight: bold; }
-        .name { font-size: 12px; font-weight: bold; color: #8b949e; }
+        .pusing { stroke: #ffcc00; stroke-dasharray: 0, 201; }
+        .percent { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-weight: bold; font-size: 16px; }
+        .name { font-size: 12px; margin-top: 10px; font-weight: bold; }
+        .btn-daftar { display: block; width: 100%; max-width: 400px; margin: 20px auto; padding: 12px; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; }
     </style>
 </head>
 <body>
+
     <div class="header">🍻 ARAMAITI SCANNER 🍻</div>
-    <div style="font-size: 12px; color: #8b949e;">SERVER RTP LIVE NAKWIN ACTIVE</div>
-    <a href="http://www.nakwin44.best/?r=gwb2274" class="sub-btn">🎰 DAFTAR & CLAIM 140%</a>
-    <div class="grid" id="list"></div>
+    <div class="sub-header">SERVER RTP LIVE NAKWIN ACTIVE</div>
+
+    <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-daftar">🎰 DAFTAR & CLAIM 140%</a>
+
+    <div class="grid">
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Gates of Olympus</div></div>
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Sweet Bonanza</div></div>
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Super Ace</div></div>
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Fortune Gems</div></div>
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Mahjong Ways 2</div></div>
+        <div class="card"><div class="timer-box"><svg><circle class="bg-c" cx="40" cy="40" r="32"></circle><circle class="pusing" cx="40" cy="40" r="32"></circle></svg><div class="percent">0%</div></div><div class="name">Lucky Neko</div></div>
+    </div>
+
     <script>
-        const games = ["Gates of Olympus", "Sweet Bonanza", "Super Ace", "Fortune Gems", "Mahjong Ways 2", "Lucky Neko"];
-        const l = document.getElementById('list');
-        games.forEach(g => {
-            let r = Math.floor(Math.random() * 76) + 23;
-            let c = r > 80 ? "#3fb950" : r > 60 ? "#d29922" : "#f85149";
-            let off = 201 - (r/100)*201;
-            l.innerHTML += `<div class="card">
-                <div class="timer-box">
-                    <svg><circle class="bg-c" cx="35" cy="35" r="32"></circle>
-                    <circle class="pusing" cx="35" cy="35" r="32" style="stroke:${c}; stroke-dashoffset:${off}"></circle></svg>
-                    <div class="percent" style="color:${c}">${r}%</div>
-                </div>
-                <div class="name">${g}</div>
-            </div>`;
-        });
+        function updateRTP() {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const percentText = card.querySelector('.percent');
+                const circle = card.querySelector('.pusing');
+                // Jana nilai random antara 30% hingga 98%
+                let val = Math.floor(Math.random() * (98 - 30 + 1)) + 30;
+                let offset = (val / 100) * 201;
+                percentText.innerText = val + "%";
+                circle.style.strokeDasharray = `${offset}, 201`;
+                // Tukar warna ikut peratusan
+                if(val > 80) circle.style.stroke = "#00ff00"; // Hijau
+                else if(val > 50) circle.style.stroke = "#ffcc00"; // Kuning
+                else circle.style.stroke = "#ff416c"; // Merah
+            });
+        }
+        setInterval(updateRTP, 5000); // Kemas kini setiap 5 saat
+        updateRTP();
     </script>
 </body>
 </html>
