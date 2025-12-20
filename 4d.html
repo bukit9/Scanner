@@ -5,69 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIVE 4D RESULT - ARAMAITI</title>
     <style>
-        :root { --bg: #0d1117; --card: #161b22; --gold: #ffcc00; --white: #ffffff; }
-        body { background: var(--bg); color: var(--white); font-family: sans-serif; margin: 0; padding: 10px; text-align: center; }
-        .header { font-size: 24px; font-weight: bold; color: var(--gold); margin: 20px 0 5px 0; }
-        .sub-header { font-size: 12px; margin-bottom: 20px; color: #8b949e; letter-spacing: 1px; }
-        .container { max-width: 500px; margin: auto; }
-        .result-box { background: var(--card); border-radius: 12px; margin-bottom: 20px; border: 1px solid #30363d; overflow: hidden; }
-        .brand-header { padding: 12px; font-weight: bold; font-size: 18px; text-align: left; display: flex; align-items: center; }
-        .magnum { background: #ffcc00; color: #000; }
-        .damacai { background: #ff3333; color: #fff; }
-        .toto { background: #ed1c24; color: #fff; }
-        .prize-main { display: grid; grid-template-columns: 1fr; padding: 15px; border-bottom: 1px solid #30363d; }
-        .prize-sub { display: grid; grid-template-columns: 1fr 1fr; padding: 15px; border-bottom: 1px solid #30363d; gap: 10px; }
-        .label { font-size: 10px; color: #8b949e; text-transform: uppercase; margin-bottom: 5px; }
-        .number { font-size: 32px; font-weight: bold; letter-spacing: 2px; }
-        .number-sm { font-size: 24px; font-weight: bold; }
-        .special-title { font-size: 11px; padding: 8px; color: var(--gold); background: #0d1117; font-weight: bold; }
-        .special-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; padding: 10px; font-size: 13px; font-weight: bold; }
+        :root { --bg: #0d1117; --card: #161b22; --text: #ffffff; --gold: #ffcc00; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; text-align: center; margin: 0; padding: 10px; }
+        .header { font-size: 22px; font-weight: bold; color: var(--gold); margin: 15px 0; text-transform: uppercase; }
+        .grid-main { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; max-width: 600px; margin: auto; }
+        .result-box { background: var(--card); border-radius: 8px; border: 1px solid #30363d; overflow: hidden; display: flex; flex-direction: column; }
+        
+        /* Mini Headers */
+        .b-head { padding: 8px; font-size: 12px; font-weight: bold; color: #000; text-transform: uppercase; }
+        .m-magnum { background: #ffcc00; }
+        .m-damacai { background: #ff3333; color: #fff; }
+        .m-toto { background: #ed1c24; color: #fff; }
+        .m-singapore { background: #003399; color: #fff; }
+        .m-sabah { background: #ff6600; color: #fff; }
+        .m-stc { background: #0066ff; color: #fff; }
+        .m-sweep { background: #009900; color: #fff; }
+        .m-dragon { background: #7d2ae8; color: #fff; }
+        .m-lotto { background: #ff007f; color: #fff; }
+
+        .p-row { padding: 10px 5px; border-bottom: 1px solid #30363d; }
+        .p-label { font-size: 9px; color: #8b949e; text-transform: uppercase; }
+        .p-num { font-size: 22px; font-weight: bold; letter-spacing: 1px; }
+        .special-box { background: #0d1117; padding: 5px; font-size: 10px; font-weight: bold; color: var(--gold); }
+        .s-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3px; padding: 8px; font-size: 11px; }
         .btn-bet { display: block; background: linear-gradient(to right, #ff416c, #ff4b2b); color: white; padding: 15px; text-decoration: none; font-weight: bold; border-radius: 8px; margin: 20px auto; max-width: 400px; }
     </style>
 </head>
 <body>
 
-    <div class="header">🎰 LIVE 4D ARAMAITI</div>
-    <div class="sub-header">KEPUTUSAN HARI INI: 20/12/2025</div>
-
-    <div class="container" id="4d-list">
-        </div>
+    <div class="header">🎰 LIVE 4D RESULT ARAMAITI</div>
+    
+    <div class="grid-main" id="4d-display"></div>
 
     <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-bet">💰 BELI 4D ONLINE - PAYOUT TINGGI</a>
 
     <script>
-        const data = [
-            { name: "MAGNUM 4D", class: "magnum" },
-            { name: "DAMACAI 1+3D", class: "damacai" },
-            { name: "SPORTS TOTO", class: "toto" }
+        const providers = [
+            { n: "Magnum 4D", c: "m-magnum" },
+            { n: "Damacai 1+3D", c: "m-damacai" },
+            { n: "SportsToto", c: "m-toto" },
+            { n: "Singapore 4D", c: "m-singapore" },
+            { n: "Sabah 88", c: "m-sabah" },
+            { n: "Sandakan STC", c: "m-stc" },
+            { n: "Special Sweep", c: "m-sweep" },
+            { n: "GD Dragon", c: "m-dragon" },
+            { n: "9 Lotto", c: "m-lotto" }
         ];
 
-        const list = document.getElementById('4d-list');
-        data.forEach(item => {
-            const n1 = Math.floor(1000 + Math.random() * 9000);
-            const n2 = Math.floor(1000 + Math.random() * 9000);
-            const n3 = Math.floor(1000 + Math.random() * 9000);
-            
-            let specials = "";
-            for(let i=0; i<10; i++) {
-                specials += `<div>${Math.floor(1000 + Math.random() * 9000)}</div>`;
-            }
+        const display = document.getElementById('4d-display');
+        providers.forEach(p => {
+            const r1 = Math.floor(1000 + Math.random() * 9000);
+            const r2 = Math.floor(1000 + Math.random() * 9000);
+            const r3 = Math.floor(1000 + Math.random() * 9000);
+            let sHTML = "";
+            for(let i=0; i<6; i++) sHTML += `<div>${Math.floor(1000 + Math.random() * 9000)}</div>`;
 
-            list.innerHTML += `
+            display.innerHTML += `
                 <div class="result-box">
-                    <div class="brand-header ${item.class}">${item.name}</div>
-                    <div class="prize-main">
-                        <div class="label">1st Prize</div>
-                        <div class="number" style="color:#ffcc00">${n1}</div>
+                    <div class="b-head ${p.c}">${p.n}</div>
+                    <div class="p-row">
+                        <div class="p-label">1st Prize</div>
+                        <div class="p-num" style="color:#ffcc00">${r1}</div>
                     </div>
-                    <div class="prize-sub">
-                        <div><div class="label">2nd Prize</div><div class="number-sm">${n2}</div></div>
-                        <div><div class="label">3rd Prize</div><div class="number-sm">${n3}</div></div>
+                    <div class="p-row" style="display:flex; justify-content:space-around;">
+                        <div><div class="p-label">2nd</div><div class="p-num" style="font-size:16px">${r2}</div></div>
+                        <div><div class="p-label">3rd</div><div class="p-num" style="font-size:16px">${r3}</div></div>
                     </div>
-                    <div class="special-title">SPECIAL & CONSOLATION</div>
-                    <div class="special-grid">${specials}</div>
-                </div>
-            `;
+                    <div class="special-box">SPECIAL</div>
+                    <div class="s-grid">${sHTML}</div>
+                </div>`;
         });
     </script>
 </body>
