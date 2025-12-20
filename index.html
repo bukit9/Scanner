@@ -27,20 +27,20 @@
     <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-daftar">🎰 DAFTAR & CLAIM 140% BONUS</a>
 
     <div class="provider-title">🔥 PRAGMATIC PLAY</div>
-    <div class="grid" id="pragmatic-grid"></div>
+    <div id="pragmatic-grid" class="grid"></div>
 
     <div class="provider-title">💎 JILI GAMES</div>
-    <div class="grid" id="jili-grid"></div>
+    <div id="jili-grid" class="grid"></div>
 
     <div class="provider-title">✨ BNG (BOOONGO)</div>
-    <div class="grid" id="bng-grid"></div>
+    <div id="bng-grid" class="grid"></div>
 
     <script>
         const poolPragmatic = ["Gates of Olympus", "Sweet Bonanza", "Starlight Princess", "Sugar Rush", "Wisdom of Athena", "Gems Bonanza", "Wolf Gold", "The Dog House", "Joker's Jewels", "Wild West Gold", "Aztec Gems", "Madame Destiny"];
         const poolJili = ["Super Ace", "Fortune Gems", "Boxing King", "Golden Empire", "Ali Baba", "Jungle King", "Money Coming", "RomaX", "Agent Ace", "Mega Ace"];
         const poolBng = ["Sun of Egypt 3", "Hit the Gold", "Black Wolf", "Magic Apple 2", "Green Chilli", "Sticky Piggy", "Dragon Wealth", "Royal Coins"];
 
-        function createEmptyCards(count, elementId) {
+        function initCards(elementId, count) {
             const grid = document.getElementById(elementId);
             for (let i = 0; i < count; i++) {
                 grid.innerHTML += `
@@ -49,40 +49,38 @@
                             <svg><circle class="bg-c" cx="35" cy="35" r="30"></circle><circle class="pusing" cx="35" cy="35" r="30"></circle></svg>
                             <div class="percent">0%</div>
                         </div>
-                        <div class="name">Loading...</div>
+                        <div class="name">Scanning...</div>
                     </div>`;
             }
         }
 
-        createEmptyCards(6, 'pragmatic-grid');
-        createEmptyCards(6, 'jili-grid');
-        createEmptyCards(4, 'bng-grid');
+        // Jalankan bina kotak dulu
+        initCards('pragmatic-grid', 6);
+        initCards('jili-grid', 6);
+        initCards('bng-grid', 4);
 
         function updateScanner() {
-            const refreshSection = (pool, gridId, count) => {
+            const refresh = (pool, gridId, count) => {
                 for (let i = 0; i < count; i++) {
                     const card = document.getElementById(`${gridId}-card-${i}`);
                     if (!card) continue;
-                    const nameText = card.querySelector('.name');
-                    const percentText = card.querySelector('.percent');
-                    const circle = card.querySelector('.pusing');
+                    const n = card.querySelector('.name');
+                    const p = card.querySelector('.percent');
+                    const c = card.querySelector('.pusing');
 
-                    const randomGame = pool[Math.floor(Math.random() * pool.length)];
+                    const game = pool[Math.floor(Math.random() * pool.length)];
                     const val = Math.floor(Math.random() * (98 - 40 + 1)) + 40;
                     const offset = (val / 100) * 188;
 
-                    nameText.innerText = randomGame;
-                    percentText.innerText = val + "%";
-                    circle.style.strokeDasharray = `${offset}, 188`;
-
-                    if(val > 80) circle.style.stroke = "#00ff00"; 
-                    else if(val > 60) circle.style.stroke = "#ffcc00"; 
-                    else circle.style.stroke = "#ff416c";
+                    n.innerText = game;
+                    p.innerText = val + "%";
+                    c.style.strokeDasharray = `${offset}, 188`;
+                    c.style.stroke = val > 80 ? "#00ff00" : (val > 60 ? "#ffcc00" : "#ff416c");
                 }
             };
-            refreshSection(poolPragmatic, 'pragmatic-grid', 6);
-            refreshSection(poolJili, 'jili-grid', 6);
-            refreshSection(poolBng, 'bng-grid', 4);
+            refresh(poolPragmatic, 'pragmatic-grid', 6);
+            refresh(poolJili, 'jili-grid', 6);
+            refresh(poolBng, 'bng-grid', 4);
         }
 
         setInterval(updateScanner, 3000); 
