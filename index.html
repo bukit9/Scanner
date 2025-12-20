@@ -35,46 +35,64 @@
     <div class="provider-title">✨ BNG (BOOONGO)</div>
     <div class="grid" id="bng-grid"></div>
 
-    <script>
-        const pragmatic = ["Gates of Olympus", "Sweet Bonanza", "Starlight Princess", "Sugar Rush", "Wisdom of Athena", "Gems Bonanza"];
-        const jili = ["Super Ace", "Fortune Gems", "Boxing King", "Golden Empire", "Ali Baba", "Jungle King"];
-        const bng = ["Sun of Egypt 3", "Hit the Gold", "Black Wolf", "Magic Apple 2"];
+    <script><script>
+    // Koleksi Nama Game (Pool)
+    const poolPragmatic = ["Gates of Olympus", "Sweet Bonanza", "Starlight Princess", "Sugar Rush", "Wisdom of Athena", "Gems Bonanza", "Wolf Gold", "The Dog House", "Joker's Jewels", "Wild West Gold", "Aztec Gems", "Madame Destiny"];
+    const poolJili = ["Super Ace", "Fortune Gems", "Boxing King", "Golden Empire", "Ali Baba", "Jungle King", "Money Coming", "RomaX", "Agent Ace", "Mega Ace"];
+    const poolBng = ["Sun of Egypt 3", "Hit the Gold", "Black Wolf", "Magic Apple 2", "Green Chilli", "Sticky Piggy", "Dragon Wealth", "Royal Coins"];
 
-        function createCards(list, elementId) {
-            const grid = document.getElementById(elementId);
-            list.forEach(game => {
-                grid.innerHTML += `
-                    <div class="card">
-                        <div class="timer-box">
-                            <svg><circle class="bg-c" cx="35" cy="35" r="30"></circle><circle class="pusing" cx="35" cy="35" r="30"></circle></svg>
-                            <div class="percent">0%</div>
-                        </div>
-                        <div class="name">${game}</div>
-                    </div>`;
-            });
+    function createEmptyCards(count, elementId) {
+        const grid = document.getElementById(elementId);
+        grid.innerHTML = ""; // Bersihkan grid lama
+        for (let i = 0; i < count; i++) {
+            grid.innerHTML += `
+                <div class="card" id="${elementId}-card-${i}">
+                    <div class="timer-box">
+                        <svg><circle class="bg-c" cx="35" cy="35" r="30"></circle><circle class="pusing" cx="35" cy="35" r="30"></circle></svg>
+                        <div class="percent">0%</div>
+                    </div>
+                    <div class="name">Loading...</div>
+                </div>`;
         }
+    }
 
-        createCards(pragmatic, 'pragmatic-grid');
-        createCards(jili, 'jili-grid');
-        createCards(bng, 'bng-grid');
+    // Bina slot (6 Pragmatic, 6 Jili, 4 BNG)
+    createEmptyCards(6, 'pragmatic-grid');
+    createEmptyCards(6, 'jili-grid');
+    createEmptyCards(4, 'bng-grid');
 
-        function updateRTP() {
-            const cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
+    function updateScanner() {
+        const refreshSection = (pool, gridId, count) => {
+            for (let i = 0; i < count; i++) {
+                const card = document.getElementById(`${gridId}-card-${i}`);
+                if(!card) continue;
+                const nameText = card.querySelector('.name');
                 const percentText = card.querySelector('.percent');
                 const circle = card.querySelector('.pusing');
-                let val = Math.floor(Math.random() * (98 - 38 + 1)) + 38; // Random 38% - 98%
-                let offset = (val / 100) * 188; // 188 is circumference for R=30
+
+                const randomGame = pool[Math.floor(Math.random() * pool.length)];
+                const val = Math.floor(Math.random() * (98 - 40 + 1)) + 40;
+                const offset = (val / 100) * 188;
+
+                nameText.innerText = randomGame;
                 percentText.innerText = val + "%";
                 circle.style.strokeDasharray = `${offset}, 188`;
+
                 if(val > 80) circle.style.stroke = "#00ff00"; 
                 else if(val > 60) circle.style.stroke = "#ffcc00"; 
                 else circle.style.stroke = "#ff416c";
-            });
-        }
+            }
+        };
 
-        setInterval(updateRTP, 8000); // Berubah setiap 8 saat
-        updateRTP();
+        refreshSection(poolPragmatic, 'pragmatic-grid', 6);
+        refreshSection(poolJili, 'jili-grid', 6);
+        refreshSection(poolBng, 'bng-grid', 4);
+    }
+
+    // KELAJUAN TINGGI: Berubah setiap 3 saat
+    setInterval(updateScanner, 3000); 
+    updateScanner();
+</script>
     </script>
 </body>
 </html>
