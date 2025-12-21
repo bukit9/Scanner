@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MATRIX VIP ENGINE</title>
+    <title>ARAMAITI MATRIX ENGINE</title>
     <style>
         :root { --matrix: #00ff41; --danger: #ff003c; --warn: #ffcc00; --bg: #000; }
         body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; overflow-x: hidden; }
@@ -11,51 +11,51 @@
         /* Scanline Effect */
         body::before { content: " "; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2000; background-size: 100% 2px, 3px 100%; pointer-events: none; }
 
-        .header { padding: 20px; border-bottom: 1px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); }
-        .header h1 { color: var(--matrix); margin: 0; font-size: 20px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 2px; }
+        .header { padding: 20px; border-bottom: 2px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); }
+        .header h1 { color: var(--matrix); margin: 0; font-size: 22px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 3px; font-weight: 900; }
         
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
         
-        /* Cyber Card */
         .card { background: #050505; border: 1px solid #1a1a1a; border-radius: 4px; padding: 8px; position: relative; overflow: hidden; }
         .card.cracked { border-color: var(--matrix); box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2); }
 
-        /* Scanning Animation over Image */
-        .img-wrap { position: relative; width: 100%; height: 100px; border: 1px solid #222; overflow: hidden; }
-        .game-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(0.7); }
+        .img-wrap { position: relative; width: 100%; height: 100px; border: 1px solid #222; overflow: hidden; background: #111; }
+        .game-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
         .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--matrix); box-shadow: 0 0 10px var(--matrix); animation: scan 2s linear infinite; }
         @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        .game-n { font-size: 10px; color: #888; margin: 8px 0 4px; text-transform: uppercase; font-weight: bold; }
-
-        /* Data Readout */
-        .rtp-val { font-size: 28px; font-weight: 900; display: block; color: var(--matrix); text-shadow: 0 0 5px var(--matrix); }
-        .status-box { font-size: 8px; margin-top: 5px; padding: 3px; background: #111; border-radius: 2px; text-transform: uppercase; }
-
-        .log-box { font-size: 9px; color: var(--matrix); background: #050505; padding: 10px; margin: 10px; border: 1px solid #1a1a1a; height: 50px; overflow: hidden; }
+        .game-n { font-size: 11px; color: #aaa; margin: 8px 0 4px; text-transform: uppercase; font-weight: bold; height: 25px; overflow: hidden; }
+        .rtp-val { font-size: 30px; font-weight: 900; display: block; color: var(--matrix); text-shadow: 0 0 5px var(--matrix); }
+        .status-box { font-size: 9px; margin-top: 5px; padding: 3px; background: #111; border-radius: 2px; text-transform: uppercase; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>MATRIX_ULTRΛ_SCΛNNER</h1>
-    <div style="font-size: 9px; color: var(--matrix);">PROTOCOL: <span id="sys-id">V.2.0.6</span> | ENCRYPTED_LINK_ACTIVE</div>
+    <h1>ARAMAITI MATRIX</h1>
+    <div style="font-size: 9px; color: var(--matrix); margin-top: 5px;">PROTOCOL: V.4.0.1 | ENCRYPTED_SYSTEM_ACTIVE</div>
 </div>
 
 <div class="grid" id="main-grid"></div>
 
-<div class="log-box" id="log-text">> INITIALIZING SYSTEM...<br>> BYPASSING FIREWALL...</div>
+<center style="padding: 20px;">
+    <a href="home.html" style="color: var(--matrix); text-decoration: none; border: 1px solid var(--matrix); padding: 8px 15px; font-size: 12px;">EXIT_DATABASE</a>
+</center>
 
 <script>
     const list = [
-        { n: "Olympus", i: "https://m.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus.png" },
-        { n: "Starlight", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" },
-        { n: "Sweet Bonanza", i: "https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" },
-        { n: "Sugar Rush", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/07/Sugar-Rush.png" },
+        { n: "Olympus", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/olympus.png" },
+        { n: "Starlight", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/starlight.png" },
+        { n: "Sweet Bonanza", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/sweet_bonanza.png" },
+        { n: "Sugar Rush", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/sugar_rush.png" },
         { n: "Boxing King", i: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png" },
         { n: "Super Rich", i: "https://static.jiligames.com/official/web/7966395f877a45059632f04e4394628d.png" },
         { n: "Sun Egypt 3", i: "https://static.bng.games/games/sun_of_egypt_3/icon.png" },
-        { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" }
+        { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" },
+        { n: "Fortune Tiger", i: "https://img.p-games.com/1001/126/icon.png" },
+        { n: "Wild West Gold", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/wild_west_gold.png" },
+        { n: "RomaX", i: "https://static.jiligames.com/official/web/103a89151525492db2170d10d1175658.png" },
+        { n: "Caishen Wins", i: "https://img.p-games.com/1001/74/icon.png" }
     ];
 
     const grid = document.getElementById('main-grid');
@@ -63,19 +63,19 @@
         grid.innerHTML += `
             <div class="card" id="c${i}">
                 <div class="img-wrap">
-                    <img src="${g.i}" class="game-img">
+                    <img src="${g.i}" class="game-img" onerror="this.src='https://via.placeholder.com/150/111/00ff41?text=DATA_MISSING'">
                     <div class="scan-line"></div>
                 </div>
                 <div class="game-n">${g.n}</div>
                 <span class="rtp-val" id="v${i}">--%</span>
-                <div class="status-box" id="s${i}">INITIALIZING...</div>
+                <div class="status-box" id="s${i}">SCANNING...</div>
             </div>
         `;
     });
 
     function update() {
         list.forEach((_, i) => {
-            let p = Math.floor(Math.random() * (99 - 45 + 1)) + 45;
+            let p = Math.floor(Math.random() * (99 - 48 + 1)) + 48;
             let val = document.getElementById('v'+i);
             let stat = document.getElementById('s'+i);
             let card = document.getElementById('c'+i);
@@ -83,17 +83,15 @@
             val.innerText = p + '%';
             if(p < 65) {
                 val.style.color = 'var(--danger)'; stat.innerText = "LINK_WEAK";
-                card.classList.remove('cracked');
+                stat.style.color = 'var(--danger)'; card.classList.remove('cracked');
             } else if(p < 85) {
                 val.style.color = 'var(--warn)'; stat.innerText = "STABLE_DATA";
-                card.classList.remove('cracked');
+                stat.style.color = 'var(--warn)'; card.classList.remove('cracked');
             } else {
                 val.style.color = 'var(--matrix)'; stat.innerText = "DATABASE_CRACKED";
-                card.classList.add('cracked');
+                stat.style.color = 'var(--matrix)'; card.classList.add('cracked');
             }
         });
-        const logs = ["> INJECTING PACKETS...", "> SERVER RESPONSE 200 OK...", "> EXTRACTING RTP DATA...", "> BYPASSING CLOUDFLARE..."];
-        document.getElementById('log-text').innerHTML = logs[Math.floor(Math.random()*logs.length)] + "<br>" + logs[Math.floor(Math.random()*logs.length)];
     }
 
     update();
