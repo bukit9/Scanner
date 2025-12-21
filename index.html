@@ -3,59 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARAMAITI HUB - VIP ENGINE</title>
+    <title>MATRIX VIP ENGINE</title>
     <style>
-        :root { --gold: #ffcc00; --red: #ff3e3e; --green: #00ff66; --bg: #000; }
-        body { background: var(--bg); color: white; font-family: 'Monaco', monospace; margin: 0; padding-bottom: 50px; }
+        :root { --matrix: #00ff41; --danger: #ff003c; --warn: #ffcc00; --bg: #000; }
+        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; overflow-x: hidden; }
         
-        /* Dashboard Header */
-        .header { padding: 15px; border-bottom: 2px solid var(--gold); background: #0a0a0a; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-        .header h1 { color: var(--gold); margin: 0; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; }
-        .engine-stat { font-size: 9px; color: var(--green); margin-top: 5px; letter-spacing: 1px; }
+        /* Scanline Effect */
+        body::before { content: " "; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2000; background-size: 100% 2px, 3px 100%; pointer-events: none; }
 
-        /* Grid */
+        .header { padding: 20px; border-bottom: 1px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 20px rgba(0, 255, 65, 0.2); }
+        .header h1 { color: var(--matrix); margin: 0; font-size: 20px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 2px; }
+        
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
         
-        /* Card Style - Tanpa Butang */
-        .card { 
-            background: #080808; border: 1px solid #1a1a1a; border-radius: 12px; 
-            padding: 10px; position: relative; overflow: hidden; transition: 0.4s;
-        }
-        .card.high-rtp { border-color: var(--green); box-shadow: inset 0 0 15px rgba(0,255,102,0.1); }
+        /* Cyber Card */
+        .card { background: #050505; border: 1px solid #1a1a1a; border-radius: 4px; padding: 8px; position: relative; overflow: hidden; }
+        .card.cracked { border-color: var(--matrix); box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2); }
 
-        /* Game Image */
-        .game-img { width: 100%; height: 105px; border-radius: 8px; object-fit: cover; filter: brightness(0.8); border: 1px solid #222; }
-        .game-title { font-size: 11px; font-weight: bold; margin: 8px 0; color: #bbb; height: 28px; display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
+        /* Scanning Animation over Image */
+        .img-wrap { position: relative; width: 100%; height: 100px; border: 1px solid #222; overflow: hidden; }
+        .game-img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(50%) brightness(0.7); }
+        .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--matrix); box-shadow: 0 0 10px var(--matrix); animation: scan 2s linear infinite; }
+        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
 
-        /* RTP Monitor */
-        .monitor { background: #000; border: 1px solid #111; border-radius: 8px; padding: 8px; position: relative; }
-        .rtp-val { font-size: 26px; font-weight: 900; display: block; line-height: 1; margin-bottom: 5px; }
-        
-        .progress-rail { background: #111; height: 10px; border-radius: 5px; overflow: hidden; }
-        .progress-fill { height: 100%; width: 0%; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
+        .game-n { font-size: 10px; color: #888; margin: 8px 0 4px; text-transform: uppercase; font-weight: bold; }
 
-        /* Live Indicator */
-        .live-tag { font-size: 8px; margin-top: 8px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .dot { height: 6px; width: 6px; border-radius: 50%; display: inline-block; background: var(--green); animation: pulse 1s infinite; }
-        
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        /* Data Readout */
+        .rtp-val { font-size: 28px; font-weight: 900; display: block; color: var(--matrix); text-shadow: 0 0 5px var(--matrix); }
+        .status-box { font-size: 8px; margin-top: 5px; padding: 3px; background: #111; border-radius: 2px; text-transform: uppercase; }
 
-        .btn-back { display: inline-block; margin-top: 30px; color: #444; text-decoration: none; font-size: 12px; border: 1px solid #222; padding: 8px 20px; border-radius: 5px; }
+        .log-box { font-size: 9px; color: var(--matrix); background: #050505; padding: 10px; margin: 10px; border: 1px solid #1a1a1a; height: 50px; overflow: hidden; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>ARAMAITI <span style="color:#fff">LIVE MONITOR</span></h1>
-    <div class="engine-stat">● SYSTEM: <span id="sys-code">LOADING...</span> | STATUS: ENCRYPTED</div>
+    <h1>MATRIX_ULTRΛ_SCΛNNER</h1>
+    <div style="font-size: 9px; color: var(--matrix);">PROTOCOL: <span id="sys-id">V.2.0.6</span> | ENCRYPTED_LINK_ACTIVE</div>
 </div>
 
-<div class="grid" id="container"></div>
+<div class="grid" id="main-grid"></div>
 
-<center><a href="home.html" class="btn-back">BACK TO DATABASE</a></center>
+<div class="log-box" id="log-text">> INITIALIZING SYSTEM...<br>> BYPASSING FIREWALL...</div>
 
 <script>
-    const gameList = [
+    const list = [
         { n: "Olympus", i: "https://m.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus.png" },
         { n: "Starlight", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" },
         { n: "Sweet Bonanza", i: "https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" },
@@ -63,59 +55,49 @@
         { n: "Boxing King", i: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png" },
         { n: "Super Rich", i: "https://static.jiligames.com/official/web/7966395f877a45059632f04e4394628d.png" },
         { n: "Sun Egypt 3", i: "https://static.bng.games/games/sun_of_egypt_3/icon.png" },
-        { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" },
-        { n: "Fortune Tiger", i: "https://img.p-games.com/1001/126/icon.png" },
-        { n: "Wild West Gold", i: "https://m.pragmaticplay.com/wp-content/uploads/2020/03/Wild-West-Gold.png" },
-        { n: "RomaX", i: "https://static.jiligames.com/official/web/103a89151525492db2170d10d1175658.png" },
-        { n: "Green Chili", i: "https://static.bng.games/games/green_chili/icon.png" }
+        { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" }
     ];
 
-    const grid = document.getElementById('container');
-    gameList.forEach((g, i) => {
+    const grid = document.getElementById('main-grid');
+    list.forEach((g, i) => {
         grid.innerHTML += `
-            <div class="card" id="card${i}">
-                <img src="${g.i}" class="game-img">
-                <div class="game-title">${g.n}</div>
-                <div class="monitor">
-                    <span class="rtp-val" id="t${i}">--%</span>
-                    <div class="progress-rail"><div id="b${i}" class="progress-fill"></div></div>
-                    <div class="live-tag"><span class="dot" id="d${i}"></span> <span id="s${i}">ANALYZING...</span></div>
+            <div class="card" id="c${i}">
+                <div class="img-wrap">
+                    <img src="${g.i}" class="game-img">
+                    <div class="scan-line"></div>
                 </div>
+                <div class="game-n">${g.n}</div>
+                <span class="rtp-val" id="v${i}">--%</span>
+                <div class="status-box" id="s${i}">INITIALIZING...</div>
             </div>
         `;
     });
 
     function update() {
-        gameList.forEach((_, i) => {
-            let rtp = Math.floor(Math.random() * (99 - 42 + 1)) + 42;
-            let txt = document.getElementById('t'+i);
-            let bar = document.getElementById('b'+i);
+        list.forEach((_, i) => {
+            let p = Math.floor(Math.random() * (99 - 45 + 1)) + 45;
+            let val = document.getElementById('v'+i);
             let stat = document.getElementById('s'+i);
-            let dot = document.getElementById('d'+i);
-            let card = document.getElementById('card'+i);
+            let card = document.getElementById('c'+i);
 
-            txt.innerText = rtp + '%';
-            bar.style.width = rtp + '%';
-
-            if(rtp < 65) {
-                txt.style.color = 'var(--red)'; bar.style.backgroundColor = 'var(--red)';
-                stat.innerText = "DATA LEAKED"; stat.style.color = "#666";
-                dot.style.background = "var(--red)"; card.classList.remove('high-rtp');
-            } else if(rtp < 85) {
-                txt.style.color = 'var(--gold)'; bar.style.backgroundColor = 'var(--gold)';
-                stat.innerText = "STABLE"; stat.style.color = "var(--gold)";
-                dot.style.background = "var(--gold)"; card.classList.remove('high-rtp');
+            val.innerText = p + '%';
+            if(p < 65) {
+                val.style.color = 'var(--danger)'; stat.innerText = "LINK_WEAK";
+                card.classList.remove('cracked');
+            } else if(p < 85) {
+                val.style.color = 'var(--warn)'; stat.innerText = "STABLE_DATA";
+                card.classList.remove('cracked');
             } else {
-                txt.style.color = 'var(--green)'; bar.style.backgroundColor = 'var(--green)';
-                stat.innerText = "SERVER CRACKED"; stat.style.color = "var(--green)";
-                dot.style.background = "var(--green)"; card.classList.add('high-rtp');
+                val.style.color = 'var(--matrix)'; stat.innerText = "DATABASE_CRACKED";
+                card.classList.add('cracked');
             }
         });
-        document.getElementById('sys-code').innerText = "V." + (Math.random() * 10).toFixed(2);
+        const logs = ["> INJECTING PACKETS...", "> SERVER RESPONSE 200 OK...", "> EXTRACTING RTP DATA...", "> BYPASSING CLOUDFLARE..."];
+        document.getElementById('log-text').innerHTML = logs[Math.floor(Math.random()*logs.length)] + "<br>" + logs[Math.floor(Math.random()*logs.length)];
     }
 
     update();
-    setInterval(update, 4000); // Automatik update tanpa butang
+    setInterval(update, 4000);
 </script>
 </body>
 </html>
