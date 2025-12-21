@@ -6,96 +6,91 @@
     <title>ARAMAITI MATRIX ENGINE</title>
     <style>
         :root { --matrix: #00ff41; --danger: #ff003c; --warn: #ffcc00; --bg: #000; }
-        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; overflow-x: hidden; }
+        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; }
         
-        /* Scanline Effect */
-        body::before { content: " "; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06)); z-index: 2000; background-size: 100% 2px, 3px 100%; pointer-events: none; }
-
-        .header { padding: 20px; border-bottom: 2px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); }
-        .header h1 { color: var(--matrix); margin: 0; font-size: 22px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 3px; font-weight: 900; }
+        /* Neon Header */
+        .header { padding: 20px; border-bottom: 2px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 15px var(--matrix); }
+        .header h1 { color: var(--matrix); margin: 0; font-size: 24px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 4px; font-weight: 900; }
         
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
         
-        .card { background: #050505; border: 1px solid #1a1a1a; border-radius: 4px; padding: 8px; position: relative; overflow: hidden; }
-        .card.cracked { border-color: var(--matrix); box-shadow: inset 0 0 15px rgba(0, 255, 65, 0.2); }
+        .card { background: #080808; border: 1px solid #222; border-radius: 8px; padding: 10px; position: relative; overflow: hidden; transition: 0.3s; }
+        .card.active { border-color: var(--matrix); box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.3); }
 
-        .img-wrap { position: relative; width: 100%; height: 100px; border: 1px solid #222; overflow: hidden; background: #111; }
-        .game-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
-        .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--matrix); box-shadow: 0 0 10px var(--matrix); animation: scan 2s linear infinite; }
-        @keyframes scan { 0% { top: 0; } 100% { top: 100%; } }
+        /* Box Gambar */
+        .img-box { width: 100%; height: 110px; background: #111; border-radius: 5px; overflow: hidden; position: relative; border: 1px solid #333; }
+        .game-img { width: 100%; height: 100%; object-fit: cover; }
+        
+        /* Laser Scan Effect */
+        .laser { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--matrix); box-shadow: 0 0 15px var(--matrix); animation: scan 2.5s linear infinite; }
+        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
 
-        .game-n { font-size: 11px; color: #aaa; margin: 8px 0 4px; text-transform: uppercase; font-weight: bold; height: 25px; overflow: hidden; }
-        .rtp-val { font-size: 30px; font-weight: 900; display: block; color: var(--matrix); text-shadow: 0 0 5px var(--matrix); }
-        .status-box { font-size: 9px; margin-top: 5px; padding: 3px; background: #111; border-radius: 2px; text-transform: uppercase; font-weight: bold; }
+        .game-name { font-size: 11px; color: #fff; margin: 10px 0 5px; font-weight: bold; text-transform: uppercase; text-align: left; }
+        .rtp-display { font-size: 32px; font-weight: 900; color: var(--matrix); text-shadow: 0 0 8px var(--matrix); text-align: left; }
+        .status-tag { font-size: 9px; font-weight: bold; text-transform: uppercase; margin-top: 5px; text-align: left; display: block; }
     </style>
 </head>
 <body>
 
 <div class="header">
     <h1>ARAMAITI MATRIX</h1>
-    <div style="font-size: 9px; color: var(--matrix); margin-top: 5px;">PROTOCOL: V.4.0.1 | ENCRYPTED_SYSTEM_ACTIVE</div>
+    <div style="font-size: 10px; color: var(--matrix); margin-top: 5px;">SYSTEM STATUS: <span id="sys">BYPASSING...</span></div>
 </div>
 
-<div class="grid" id="main-grid"></div>
-
-<center style="padding: 20px;">
-    <a href="home.html" style="color: var(--matrix); text-decoration: none; border: 1px solid var(--matrix); padding: 8px 15px; font-size: 12px;">EXIT_DATABASE</a>
-</center>
+<div class="grid" id="engine-grid"></div>
 
 <script>
-    const list = [
-        { n: "Olympus", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/olympus.png" },
-        { n: "Starlight", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/starlight.png" },
-        { n: "Sweet Bonanza", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/sweet_bonanza.png" },
-        { n: "Sugar Rush", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/sugar_rush.png" },
-        { n: "Boxing King", i: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png" },
-        { n: "Super Rich", i: "https://static.jiligames.com/official/web/7966395f877a45059632f04e4394628d.png" },
-        { n: "Sun Egypt 3", i: "https://static.bng.games/games/sun_of_egypt_3/icon.png" },
-        { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" },
-        { n: "Fortune Tiger", i: "https://img.p-games.com/1001/126/icon.png" },
-        { n: "Wild West Gold", i: "https://static.pragmaticplay.net/gs2c/common/game-images/res/wild_west_gold.png" },
-        { n: "RomaX", i: "https://static.jiligames.com/official/web/103a89151525492db2170d10d1175658.png" },
-        { n: "Caishen Wins", i: "https://img.p-games.com/1001/74/icon.png" }
+    // Link Gambar Direct (Lebih Stabil)
+    const games = [
+        { n: "GATES OLYMPUS", i: "https://files.softicons.com/download/culture-icons/greek-mythology-icons-by-felippe-regazio/png/256x256/Zeus.png" },
+        { n: "STARLIGHT", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" },
+        { n: "SWEET BONANZA", i: "https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" },
+        { n: "SUGAR RUSH", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/07/Sugar-Rush.png" },
+        { n: "BOXING KING", i: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png" },
+        { n: "SUPER RICH", i: "https://static.jiligames.com/official/web/7966395f877a45059632f04e4394628d.png" },
+        { n: "MAHJONG WAYS", i: "https://img.p-games.com/1001/65/icon.png" },
+        { n: "SUN EGYPT 3", i: "https://static.bng.games/games/sun_of_egypt_3/icon.png" }
     ];
 
-    const grid = document.getElementById('main-grid');
-    list.forEach((g, i) => {
+    const grid = document.getElementById('engine-grid');
+    games.forEach((g, i) => {
         grid.innerHTML += `
-            <div class="card" id="c${i}">
-                <div class="img-wrap">
-                    <img src="${g.i}" class="game-img" onerror="this.src='https://via.placeholder.com/150/111/00ff41?text=DATA_MISSING'">
-                    <div class="scan-line"></div>
+            <div class="card" id="card${i}">
+                <div class="img-box">
+                    <img src="${g.i}" class="game-img" onerror="this.src='https://via.placeholder.com/150/000/00ff41?text=LOADING...'">
+                    <div class="laser"></div>
                 </div>
-                <div class="game-n">${g.n}</div>
-                <span class="rtp-val" id="v${i}">--%</span>
-                <div class="status-box" id="s${i}">SCANNING...</div>
+                <div class="game-name">${g.n}</div>
+                <div class="rtp-display" id="rtp${i}">--%</div>
+                <span class="status-tag" id="stat${i}">INITIALIZING...</span>
             </div>
         `;
     });
 
-    function update() {
-        list.forEach((_, i) => {
-            let p = Math.floor(Math.random() * (99 - 48 + 1)) + 48;
-            let val = document.getElementById('v'+i);
-            let stat = document.getElementById('s'+i);
-            let card = document.getElementById('c'+i);
+    function run() {
+        games.forEach((_, i) => {
+            let p = Math.floor(Math.random() * (99 - 45 + 1)) + 45;
+            let val = document.getElementById('rtp'+i);
+            let st = document.getElementById('stat'+i);
+            let cd = document.getElementById('card'+i);
 
             val.innerText = p + '%';
             if(p < 65) {
-                val.style.color = 'var(--danger)'; stat.innerText = "LINK_WEAK";
-                stat.style.color = 'var(--danger)'; card.classList.remove('cracked');
+                val.style.color = 'var(--danger)'; st.innerText = "DATA_WEAK"; st.style.color = 'var(--danger)';
+                cd.classList.remove('active');
             } else if(p < 85) {
-                val.style.color = 'var(--warn)'; stat.innerText = "STABLE_DATA";
-                stat.style.color = 'var(--warn)'; card.classList.remove('cracked');
+                val.style.color = 'var(--warn)'; st.innerText = "SIGNAL_STABLE"; st.style.color = 'var(--warn)';
+                cd.classList.remove('active');
             } else {
-                val.style.color = 'var(--matrix)'; stat.innerText = "DATABASE_CRACKED";
-                stat.style.color = 'var(--matrix)'; card.classList.add('cracked');
+                val.style.color = 'var(--matrix)'; st.innerText = "DATABASE_CRACKED"; st.style.color = 'var(--matrix)';
+                cd.classList.add('active');
             }
         });
+        document.getElementById('sys').innerText = "V." + (Math.random()*100).toFixed(0) + "_ACTIVE";
     }
 
-    update();
-    setInterval(update, 4000);
+    run();
+    setInterval(run, 4000);
 </script>
 </body>
 </html>
