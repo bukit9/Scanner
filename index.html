@@ -3,64 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARAMAITI HUB - VIP SCANNER</title>
+    <title>ARAMAITI HUB - VIP ENGINE</title>
     <style>
-        :root { --gold: #ffcc00; --red: #ff4d4d; --green: #00ff00; --bg: #050505; }
-        body { background: var(--bg); color: white; font-family: 'Segoe UI', Roboto, sans-serif; margin: 0; overflow-x: hidden; }
+        :root { --gold: #ffcc00; --red: #ff3e3e; --green: #00ff66; --bg: #000; }
+        body { background: var(--bg); color: white; font-family: 'Monaco', monospace; margin: 0; padding-bottom: 50px; }
         
-        /* Neon Header */
-        .header { padding: 20px; border-bottom: 1px solid #333; background: rgba(0,0,0,0.9); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(10px); }
-        .header h1 { color: var(--gold); margin: 0; font-size: 22px; text-transform: uppercase; letter-spacing: 3px; text-shadow: 0 0 15px rgba(255,204,0,0.5); }
-        .live-status { font-size: 10px; color: var(--green); margin-top: 8px; font-weight: bold; text-transform: uppercase; }
+        /* Dashboard Header */
+        .header { padding: 15px; border-bottom: 2px solid var(--gold); background: #0a0a0a; position: sticky; top: 0; z-index: 1000; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
+        .header h1 { color: var(--gold); margin: 0; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; }
+        .engine-stat { font-size: 9px; color: var(--green); margin-top: 5px; letter-spacing: 1px; }
 
-        /* Grid Layout */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; }
+        /* Grid */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; }
+        
+        /* Card Style - Tanpa Butang */
         .card { 
-            background: linear-gradient(145deg, #111, #000); 
-            border: 1px solid #222; border-radius: 15px; padding: 12px; 
-            position: relative; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            background: #080808; border: 1px solid #1a1a1a; border-radius: 12px; 
+            padding: 10px; position: relative; overflow: hidden; transition: 0.4s;
         }
+        .card.high-rtp { border-color: var(--green); box-shadow: inset 0 0 15px rgba(0,255,102,0.1); }
+
+        /* Game Image */
+        .game-img { width: 100%; height: 105px; border-radius: 8px; object-fit: cover; filter: brightness(0.8); border: 1px solid #222; }
+        .game-title { font-size: 11px; font-weight: bold; margin: 8px 0; color: #bbb; height: 28px; display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
+
+        /* RTP Monitor */
+        .monitor { background: #000; border: 1px solid #111; border-radius: 8px; padding: 8px; position: relative; }
+        .rtp-val { font-size: 26px; font-weight: 900; display: block; line-height: 1; margin-bottom: 5px; }
         
-        /* Glow Effect bila RTP Tinggi */
-        .card.hot { border-color: var(--gold); box-shadow: 0 0 20px rgba(255,204,0,0.2); }
+        .progress-rail { background: #111; height: 10px; border-radius: 5px; overflow: hidden; }
+        .progress-fill { height: 100%; width: 0%; transition: width 1s cubic-bezier(0.4, 0, 0.2, 1); }
 
-        .game-img { width: 100%; height: 120px; border-radius: 10px; object-fit: cover; border: 1px solid #333; }
-        .game-title { font-size: 12px; font-weight: 800; margin: 10px 0; color: #fff; height: 30px; display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
-
-        /* RTP Display */
-        .rtp-box { background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px; margin-bottom: 10px; }
-        .rtp-percent { font-size: 24px; font-weight: 900; display: block; margin-bottom: 5px; font-family: 'Courier New', monospace; }
+        /* Live Indicator */
+        .live-tag { font-size: 8px; margin-top: 8px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .dot { height: 6px; width: 6px; border-radius: 50%; display: inline-block; background: var(--green); animation: pulse 1s infinite; }
         
-        .bar-container { background: #222; height: 8px; border-radius: 5px; overflow: hidden; position: relative; }
-        .bar-fill { height: 100%; width: 0%; transition: width 1.5s cubic-bezier(0.1, 0.7, 1.0, 0.1), background-color 0.5s; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
-        .btn-play { 
-            background: var(--gold); color: #000; padding: 12px; border-radius: 8px; 
-            text-decoration: none; font-weight: 900; display: block; font-size: 12px;
-            text-transform: uppercase; transition: 0.2s;
-        }
-        .btn-play:active { transform: scale(0.95); }
-
-        /* Back Button */
-        .footer { padding: 40px 20px; }
-        .btn-back { color: #666; text-decoration: none; font-weight: bold; font-size: 14px; border: 1px solid #333; padding: 10px 20px; border-radius: 20px; }
+        .btn-back { display: inline-block; margin-top: 30px; color: #444; text-decoration: none; font-size: 12px; border: 1px solid #222; padding: 8px 20px; border-radius: 5px; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>ARAMAITI <span style="color:white">SCANNER</span></h1>
-    <div class="live-status">● SYSTEM CONNECTED: <span id="engine-id">PRAGMATIC_GEN_4</span></div>
+    <h1>ARAMAITI <span style="color:#fff">LIVE MONITOR</span></h1>
+    <div class="engine-stat">● SYSTEM: <span id="sys-code">LOADING...</span> | STATUS: ENCRYPTED</div>
 </div>
 
-<div class="grid" id="game-grid"></div>
+<div class="grid" id="container"></div>
 
-<div class="footer">
-    <a href="home.html" class="btn-back">⬅ KEMBALI KE HUB</a>
-</div>
+<center><a href="home.html" class="btn-back">BACK TO DATABASE</a></center>
 
 <script>
-    const games = [
+    const gameList = [
         { n: "Olympus", i: "https://m.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus.png" },
         { n: "Starlight", i: "https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" },
         { n: "Sweet Bonanza", i: "https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" },
@@ -70,52 +65,57 @@
         { n: "Sun Egypt 3", i: "https://static.bng.games/games/sun_of_egypt_3/icon.png" },
         { n: "Mahjong Ways 2", i: "https://img.p-games.com/1001/65/icon.png" },
         { n: "Fortune Tiger", i: "https://img.p-games.com/1001/126/icon.png" },
-        { n: "Dragon Hatch", i: "https://img.p-games.com/1001/57/icon.png" },
-        { n: "Aztec Gems", i: "https://m.pragmaticplay.com/wp-content/uploads/2018/02/Aztec-Gems.png" },
-        { n: "Caishen Wins", i: "https://img.p-games.com/1001/74/icon.png" }
+        { n: "Wild West Gold", i: "https://m.pragmaticplay.com/wp-content/uploads/2020/03/Wild-West-Gold.png" },
+        { n: "RomaX", i: "https://static.jiligames.com/official/web/103a89151525492db2170d10d1175658.png" },
+        { n: "Green Chili", i: "https://static.bng.games/games/green_chili/icon.png" }
     ];
 
-    const grid = document.getElementById('game-grid');
-    games.forEach((g, idx) => {
+    const grid = document.getElementById('container');
+    gameList.forEach((g, i) => {
         grid.innerHTML += `
-            <div class="card" id="card${idx}">
+            <div class="card" id="card${i}">
                 <img src="${g.i}" class="game-img">
                 <div class="game-title">${g.n}</div>
-                <div class="rtp-box">
-                    <span class="rtp-percent" id="t${idx}">--%</span>
-                    <div class="bar-container"><div id="b${idx}" class="bar-fill"></div></div>
+                <div class="monitor">
+                    <span class="rtp-val" id="t${i}">--%</span>
+                    <div class="progress-rail"><div id="b${i}" class="progress-fill"></div></div>
+                    <div class="live-tag"><span class="dot" id="d${i}"></span> <span id="s${i}">ANALYZING...</span></div>
                 </div>
-                <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MULA SCAN</a>
             </div>
         `;
     });
 
     function update() {
-        games.forEach((_, i) => {
-            let p = Math.floor(Math.random() * (99 - 40 + 1)) + 40;
-            let t = document.getElementById('t'+i);
-            let b = document.getElementById('b'+i);
-            let c = document.getElementById('card'+i);
-            
-            t.innerText = p + '%';
-            b.style.width = p + '%';
+        gameList.forEach((_, i) => {
+            let rtp = Math.floor(Math.random() * (99 - 42 + 1)) + 42;
+            let txt = document.getElementById('t'+i);
+            let bar = document.getElementById('b'+i);
+            let stat = document.getElementById('s'+i);
+            let dot = document.getElementById('d'+i);
+            let card = document.getElementById('card'+i);
 
-            if(p < 60) { 
-                t.style.color='#ff4d4d'; b.style.backgroundColor='#ff4d4d'; 
-                c.classList.remove('hot');
-            } else if(p < 85) { 
-                t.style.color='#ffcc00'; b.style.backgroundColor='#ffcc00';
-                c.classList.remove('hot');
-            } else { 
-                t.style.color='#00ff00'; b.style.backgroundColor='#00ff00';
-                c.classList.add('hot'); // Efek Glow Gold
+            txt.innerText = rtp + '%';
+            bar.style.width = rtp + '%';
+
+            if(rtp < 65) {
+                txt.style.color = 'var(--red)'; bar.style.backgroundColor = 'var(--red)';
+                stat.innerText = "DATA LEAKED"; stat.style.color = "#666";
+                dot.style.background = "var(--red)"; card.classList.remove('high-rtp');
+            } else if(rtp < 85) {
+                txt.style.color = 'var(--gold)'; bar.style.backgroundColor = 'var(--gold)';
+                stat.innerText = "STABLE"; stat.style.color = "var(--gold)";
+                dot.style.background = "var(--gold)"; card.classList.remove('high-rtp');
+            } else {
+                txt.style.color = 'var(--green)'; bar.style.backgroundColor = 'var(--green)';
+                stat.innerText = "SERVER CRACKED"; stat.style.color = "var(--green)";
+                dot.style.background = "var(--green)"; card.classList.add('high-rtp');
             }
         });
-        document.getElementById('engine-id').innerText = "SCANNING_" + Math.random().toString(36).substring(7).toUpperCase();
+        document.getElementById('sys-code').innerText = "V." + (Math.random() * 10).toFixed(2);
     }
 
     update();
-    setInterval(update, 4000); // Pola pertukaran 4 saat
+    setInterval(update, 4000); // Automatik update tanpa butang
 </script>
 </body>
 </html>
