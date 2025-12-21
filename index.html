@@ -3,189 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARAMAITI SCANNER - LIVE RTP</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>ARAMAITI HUB - VIP ONLY</title>
     <style>
-        :root {
-            --primary: #ffcc00;
-            --bg: #0d0d0d;
-            --card: #1a1a1a;
-            --win: #00ff88;
+        body { 
+            background: #000; color: white; font-family: 'Segoe UI', sans-serif; 
+            margin: 0; padding: 0; text-align: center;
         }
-
-        body {
-            background-color: var(--bg);
-            color: white;
-            font-family: 'Poppins', sans-serif;
-            margin: 0; padding: 20px;
-            text-align: center;
+        /* Bahagian Gambar Amoi Merah */
+        .hero-section {
+            width: 100%; height: 450px;
+            /* Menggunakan nama fail panjang yang bos upload tadi */
+            background: url('Gemini_Generated_Image_etuqc9etuqc9etuq.jpg');
+            background-size: cover; 
+            background-position: center top;
+            position: relative; 
+            border-bottom: 3px solid #ffcc00;
         }
-
-        header {
-            margin-bottom: 30px;
+        .vignette {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 30%, #000 100%);
         }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 24px;
-            color: var(--primary);
+        .container { padding: 20px; max-width: 400px; margin: auto; }
+        .logo-title { 
+            font-size: 35px; font-weight: 900; color: #ffcc00; 
+            margin-top: -60px; position: relative; 
+            text-shadow: 0px 4px 15px rgba(0,0,0,1);
             letter-spacing: 2px;
         }
-
-        .status-bar {
-            background: rgba(255, 204, 0, 0.1);
-            border: 1px solid var(--primary);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 12px;
-            margin-top: 10px;
+        .btn-link {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #161b22; border: 1px solid #30363d;
+            padding: 18px 25px; margin-bottom: 12px; border-radius: 15px;
+            color: white; text-decoration: none; font-weight: bold;
+            transition: 0.3s; font-size: 16px;
         }
-
-        /* Grid Permainan */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            max-width: 500px;
-            margin: auto;
+        .btn-link:hover { border-color: #ffcc00; transform: scale(1.02); }
+        .btn-register {
+            background: linear-gradient(45deg, #ffcc00, #b89600);
+            color: #000; border: none; font-size: 18px; font-weight: 900;
+            justify-content: center; margin-top: 15px;
+            box-shadow: 0 5px 25px rgba(255, 204, 0, 0.4);
         }
-
-        .game-card {
-            background: var(--card);
-            border-radius: 15px;
-            padding: 10px;
-            border: 1px solid #333;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .game-img {
-            width: 100%;
-            height: 100px;
-            background: #222;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10px;
-            color: #555;
-        }
-
-        .game-title {
-            font-size: 13px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        /* RTP Bar */
-        .rtp-container {
-            background: #000;
-            height: 20px;
-            border-radius: 10px;
-            position: relative;
-            border: 1px solid #333;
-        }
-
-        .rtp-bar {
-            height: 100%;
-            border-radius: 10px;
-            width: 0%;
-            transition: width 1.5s ease-in-out;
-            background: linear-gradient(90deg, #ffcc00, #00ff88);
-        }
-
-        .rtp-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 11px;
-            font-weight: 900;
-            color: white;
-            text-shadow: 1px 1px 2px #000;
-        }
-
-        .btn-play {
-            display: block;
-            background: var(--primary);
-            color: #000;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 8px;
-            margin-top: 10px;
-            border-radius: 8px;
-        }
-
-        .update-time {
-            font-size: 10px;
-            color: #666;
-            margin-top: 30px;
-        }
+        .hot-tag { background: red; font-size: 10px; padding: 2px 6px; border-radius: 4px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">ARAMAITI SCANNER</div>
-        <div class="status-bar">● SCANNING ENGINE ACTIVE</div>
-    </header>
+    <div class="hero-section">
+        <div class="vignette"></div>
+    </div>
 
-    <div class="grid-container" id="gameGrid">
-        </div>
+    <div class="container">
+        <h1 class="logo-title">ARAMAITI HUB</h1>
+        <p style="color: #aaa; font-size: 12px; margin-bottom: 25px;">SCANNER RTP & 4D TERPANTAS MALAYSIA</p>
 
-    <p class="update-time">Last Update: <span id="time"></span></p>
+        <a href="https://bukit9.github.io/Scanner/index.html" class="btn-link">
+            <span>🟡 SCANNER RTP LIVE</span>
+            <span class="hot-tag">HOT</span>
+        </a>
+        
+        <a href="https://m.4d88.com/" class="btn-link">
+            <span>📊 4D LIVE RESULT</span>
+            <span>➜</span>
+        </a>
 
-    <script>
-        // Senarai Game
-        const games = [
-            { name: "Gates of Olympus", img: "⚡" },
-            { name: "Starlight Princess", img: "🪄" },
-            { name: "Sweet Bonanza", img: "🍭" },
-            { name: "Sugar Rush", img: "🍬" },
-            { name: "Wild West Gold", img: "🤠" },
-            { name: "Mahjong Ways 2", img: "🀄" }
-        ];
+        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-link btn-register">
+            🔥 DAFTAR & CLAIM 140% BONUS
+        </a>
+        
+        <p style="color: #333; font-size: 10px; margin-top: 40px;">© 2025 ARAMAITI HUB • VIP ACCESS ONLY</p>
+    </div>
 
-        function generateRTP() {
-            const grid = document.getElementById('gameGrid');
-            grid.innerHTML = '';
-
-            games.forEach(game => {
-                // Jana peratus rawak antara 75% hingga 99%
-                const rtpValue = Math.floor(Math.random() * (99 - 75 + 1)) + 75;
-                
-                // Warna bar ikut peratus
-                let barColor = "#ffcc00"; // Kuning
-                if(rtpValue > 90) barColor = "#00ff88"; // Hijau kalau tinggi
-
-                const card = `
-                    <div class="game-card">
-                        <div class="game-img">${game.img} PHOTO</div>
-                        <span class="game-title">${game.name}</span>
-                        <div class="rtp-container">
-                            <div class="rtp-bar" style="width: ${rtpValue}%; background: ${barColor}"></div>
-                            <div class="rtp-text">${rtpValue}%</div>
-                        </div>
-                        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-
-            // Update masa
-            const now = new Date();
-            document.getElementById('time').innerText = now.toLocaleTimeString();
-        }
-
-        // Jalankan fungsi masa mula-mula
-        generateRTP();
-
-        // Auto update setiap 30 saat untuk nampak "Live"
-        setInterval(generateRTP, 30000);
-    </script>
 </body>
 </html>
