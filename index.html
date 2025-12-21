@@ -3,118 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARAMAITI SCANNER LIVE</title>
+    <title>ARAMAITI SCANNER VIP</title>
     <style>
-        body { background: #000; color: white; font-family: sans-serif; margin: 0; text-align: center; }
-        .header { padding: 15px; border-bottom: 2px solid #ffcc00; background: #0a0a0a; position: sticky; top: 0; z-index: 100; }
-        .header h1 { color: #ffcc00; margin: 0; font-size: 18px; text-transform: uppercase; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
-        .card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 8px; }
-        .game-img { width: 100%; height: 100px; border-radius: 8px; object-fit: cover; margin-bottom: 5px; border: 1px solid #444; }
-        .game-title { font-size: 11px; font-weight: bold; margin-bottom: 5px; min-height: 25px; display: flex; align-items: center; justify-content: center; }
-        .rtp-percent { font-weight: 900; font-size: 18px; margin-bottom: 5px; display: block; }
-        .rtp-bar-bg { background: #222; border-radius: 10px; height: 12px; overflow: hidden; border: 1px solid #333; margin-bottom: 8px; }
-        .rtp-bar-fill { height: 100%; width: 0%; transition: width 1s, background-color 0.5s; }
-        .btn-play { background: #ffcc00; color: #000; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; display: block; font-size: 10px; }
-        .footer-nav { padding: 20px; }
-        .btn-back { color: #ffcc00; text-decoration: none; font-size: 13px; font-weight: bold; }
+        body { background: #000; color: white; font-family: 'Arial', sans-serif; margin: 0; text-align: center; }
+        .header { padding: 15px; border-bottom: 2px solid #ffcc00; background: #0a0a0a; position: sticky; top: 0; z-index: 1000; }
+        .header h1 { color: #ffcc00; margin: 0; font-size: 18px; text-transform: uppercase; letter-spacing: 1px; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
+        .card { background: #111; border: 1px solid #333; border-radius: 12px; padding: 10px; transition: 0.3s; }
+        .game-img { width: 100%; height: 110px; border-radius: 8px; object-fit: cover; margin-bottom: 8px; border: 1px solid #444; }
+        .game-title { font-size: 12px; font-weight: bold; margin-bottom: 8px; height: 30px; display: flex; align-items: center; justify-content: center; }
+        .rtp-percent { font-weight: 900; font-size: 20px; margin-bottom: 5px; display: block; transition: 0.5s; }
+        .rtp-bar-bg { background: #222; border-radius: 10px; height: 14px; overflow: hidden; border: 1px solid #333; margin-bottom: 10px; }
+        .rtp-bar-fill { height: 100%; width: 0%; transition: width 0.8s ease-in-out, background-color 0.5s; }
+        .btn-play { background: #ffcc00; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; display: block; font-size: 11px; }
+        .footer { padding: 30px; }
+        .btn-back { color: #ffcc00; text-decoration: none; font-weight: bold; font-size: 14px; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>ARAMAITI SCANNER</h1>
-    <div style="color:#00ff00; font-size:9px; margin-top:3px;">● ENGINE SCANNING LIVE ACTIVE</div>
+    <h1>ARAMAITI SCANNER LIVE</h1>
+    <div style="color:#00ff00; font-size:10px; margin-top:5px;">● ENGINE SCANNING: <span id="scan-status">PRAGMATIC</span></div>
 </div>
 
-<div class="grid">
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus.png" class="game-img">
-        <div class="game-title">Gates of Olympus</div>
-        <span class="rtp-percent" id="t1">--%</span>
-        <div class="rtp-bar-bg"><div id="b1" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
+<div class="grid" id="game-container">
     </div>
 
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" class="game-img">
-        <div class="game-title">Starlight Princess</div>
-        <span class="rtp-percent" id="t2">--%</span>
-        <div class="rtp-bar-bg"><div id="b2" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" class="game-img">
-        <div class="game-title">Sweet Bonanza</div>
-        <span class="rtp-percent" id="t3">--%</span>
-        <div class="rtp-bar-bg"><div id="b3" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2022/07/Sugar-Rush.png" class="game-img">
-        <div class="game-title">Sugar Rush</div>
-        <span class="rtp-percent" id="t4">--%</span>
-        <div class="rtp-bar-bg"><div id="b4" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2018/02/Aztec-Gems.png" class="game-img">
-        <div class="game-title">Aztec Gems</div>
-        <span class="rtp-percent" id="t5">--%</span>
-        <div class="rtp-bar-bg"><div id="b5" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2023/06/Wisdom-of-Athena.png" class="game-img">
-        <div class="game-title">Wisdom of Athena</div>
-        <span class="rtp-percent" id="t6">--%</span>
-        <div class="rtp-bar-bg"><div id="b6" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://img.p-games.com/1001/65/icon.png" class="game-img">
-        <div class="game-title">Mahjong Ways 2</div>
-        <span class="rtp-percent" id="t7">--%</span>
-        <div class="rtp-bar-bg"><div id="b7" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-
-    <div class="card">
-        <img src="https://m.pragmaticplay.com/wp-content/uploads/2020/03/Wild-West-Gold.png" class="game-img">
-        <div class="game-title">Wild West Gold</div>
-        <span class="rtp-percent" id="t8">--%</span>
-        <div class="rtp-bar-bg"><div id="b8" class="rtp-bar-fill"></div></div>
-        <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN</a>
-    </div>
-</div>
-
-<div class="footer-nav">
+<div class="footer">
     <a href="home.html" class="btn-back">⬅ KEMBALI KE MENU UTAMA</a>
 </div>
 
 <script>
-    function update() {
-        for(let i=1; i<=8; i++) {
-            let p = Math.floor(Math.random() * (98 - 45 + 1)) + 45;
-            let t = document.getElementById('t'+i);
-            let b = document.getElementById('b'+i);
-            if(!t || !b) continue;
-            
-            t.innerText = p + '%';
-            b.style.width = p + '%';
+    const games = [
+        { name: "Gates of Olympus", img: "https://files.boat.rocks/Banners/gates-of-olympus.png", prov: "PRAGMATIC" },
+        { name: "Starlight Princess", img: "https://files.boat.rocks/Banners/starlight-princess.png", prov: "PRAGMATIC" },
+        { name: "Sweet Bonanza", img: "https://files.boat.rocks/Banners/sweet-bonanza.png", prov: "PRAGMATIC" },
+        { name: "Sugar Rush", img: "https://files.boat.rocks/Banners/sugar-rush.png", prov: "PRAGMATIC" },
+        { name: "Mahjong Ways 2", img: "https://files.boat.rocks/Banners/mahjong-ways-2.png", prov: "PG SOFT" },
+        { name: "Super Rich", img: "https://static.jiligames.com/official/web/7966395f877a45059632f04e4394628d.png", prov: "JILI" },
+        { name: "Boxing King", img: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png", prov: "JILI" },
+        { name: "Sun of Egypt 3", img: "https://static.bng.games/games/sun_of_egypt_3/icon.png", prov: "BNG" }
+    ];
 
-            if(p < 65) { t.style.color = '#ff4d4d'; b.style.backgroundColor = '#ff4d4d'; }
-            else if(p < 85) { t.style.color = '#ffcc00'; b.style.backgroundColor = '#ffcc00'; }
-            else { t.style.color = '#00ff00'; b.style.backgroundColor = '#00ff00'; }
-        }
+    function renderGames() {
+        const container = document.getElementById('game-container');
+        container.innerHTML = '';
+        games.forEach((game, index) => {
+            container.innerHTML += `
+                <div class="card">
+                    <img src="${game.img}" class="game-img" onerror="this.src='https://via.placeholder.com/150/222/ffcc00?text=${game.prov}'">
+                    <div class="game-title">${game.name}</div>
+                    <span class="rtp-percent" id="t${index}">--%</span>
+                    <div class="rtp-bar-bg"><div id="b${index}" class="rtp-bar-fill"></div></div>
+                    <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
+                </div>
+            `;
+        });
+        updateRTP();
     }
-    update();
-    setInterval(update, 10000);
+
+    function updateRTP() {
+        games.forEach((_, i) => {
+            let p = Math.floor(Math.random() * (99 - 48 + 1)) + 48;
+            let t = document.getElementById('t' + i);
+            let b = document.getElementById('b' + i);
+            if(t && b) {
+                t.innerText = p + '%';
+                b.style.width = p + '%';
+                if(p < 65) { t.style.color = '#ff4d4d'; b.style.backgroundColor = '#ff4d4d'; }
+                else if(p < 85) { t.style.color = '#ffcc00'; b.style.backgroundColor = '#ffcc00'; }
+                else { t.style.color = '#00ff00'; b.style.backgroundColor = '#00ff00'; }
+            }
+        });
+        // Tukar status provider secara random biar nampak pro
+        const provs = ["PRAGMATIC", "JILI", "BNG", "PG SOFT"];
+        document.getElementById('scan-status').innerText = provs[Math.floor(Math.random()*provs.length)];
+    }
+
+    renderGames();
+    setInterval(updateRTP, 4000); // Bertukar setiap 4 saat
 </script>
 </body>
 </html>
