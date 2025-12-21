@@ -5,58 +5,78 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARAMAITI SCANNER LIVE</title>
     <style>
-        body { background: #000; color: white; font-family: sans-serif; margin: 0; text-align: center; }
-        .header { padding: 20px; border-bottom: 2px solid #ffcc00; }
-        .header h1 { color: #ffcc00; margin: 0; letter-spacing: 2px; font-size: 24px; }
-        .status { font-size: 12px; color: #aaa; margin-top: 5px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 20px; }
-        .card { background: #111; border: 1px solid #333; border-radius: 15px; padding: 15px; }
-        .game-img { width: 100%; height: 100px; background: #222; border-radius: 10px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #444; }
-        .game-title { font-size: 14px; font-weight: bold; margin-bottom: 10px; height: 35px; }
-        .rtp-bar-bg { background: #333; border-radius: 50px; height: 15px; overflow: hidden; margin-bottom: 10px; }
-        .rtp-bar-fill { height: 100%; background: linear-gradient(90deg, #ffcc00, #ffae00); transition: width 1s ease-in-out; }
-        .rtp-percent { font-weight: bold; font-size: 16px; color: #ffcc00; }
-        .btn-play { background: #ffcc00; color: #000; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold; display: block; margin-top: 10px; font-size: 12px; }
-        .btn-back { display: block; color: #ffcc00; text-decoration: none; margin-top: 20px; font-size: 14px; }
+        body { background: #000; color: white; font-family: 'Poppins', sans-serif; margin: 0; text-align: center; }
+        .header { padding: 20px; border-bottom: 2px solid #ffcc00; background: rgba(255, 204, 0, 0.05); }
+        .header h1 { color: #ffcc00; margin: 0; letter-spacing: 2px; font-size: 22px; text-transform: uppercase; }
+        .status-box { display: inline-block; padding: 5px 15px; border: 1px solid #ffcc00; border-radius: 20px; margin-top: 10px; font-size: 11px; color: #ffcc00; }
+        
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 15px; }
+        .card { background: #111; border: 1px solid #222; border-radius: 12px; padding: 10px; position: relative; overflow: hidden; }
+        
+        /* Gambar Game */
+        .game-img { width: 100%; height: 110px; border-radius: 8px; margin-bottom: 8px; object-fit: cover; border: 1px solid #333; }
+        .game-title { font-size: 13px; font-weight: bold; margin-bottom: 8px; height: 32px; display: flex; align-items: center; justify-content: center; }
+        
+        /* Bar Peratus Warna-Warni */
+        .rtp-container { margin-bottom: 10px; }
+        .rtp-percent { font-weight: 900; font-size: 18px; margin-bottom: 4px; display: block; }
+        .rtp-bar-bg { background: #222; border-radius: 10px; height: 12px; overflow: hidden; border: 1px solid #333; }
+        .rtp-bar-fill { height: 100%; width: 0%; transition: width 1.5s ease-in-out, background-color 0.5s; }
+
+        /* Klasifikasi Warna */
+        .low { color: #ff4d4d; } /* Merah */
+        .mid { color: #ffcc00; } /* Kuning */
+        .high { color: #00ff00; } /* Hijau */
+
+        .btn-play { background: #ffcc00; color: #000; padding: 10px; border-radius: 6px; text-decoration: none; font-weight: bold; display: block; font-size: 11px; text-transform: uppercase; }
+        .btn-back { display: block; color: #ffcc00; text-decoration: none; margin: 20px 0; font-size: 13px; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="header">
     <h1>ARAMAITI SCANNER</h1>
-    <div class="status">🟢 SCANNING ENGINE ACTIVE</div>
+    <div class="status-box">● SCANNING ENGINE ACTIVE</div>
 </div>
 
 <div class="grid">
     <div class="card">
-        <div class="game-img">PHOTO</div>
+        <img src="https://m.pragmaticplay.com/wp-content/uploads/2021/02/Gates-of-Olympus.png" class="game-img" alt="Olympus">
         <div class="game-title">Gates of Olympus</div>
-        <div class="rtp-percent">89%</div>
-        <div class="rtp-bar-bg"><div class="rtp-bar-fill" style="width: 89%;"></div></div>
+        <div class="rtp-container">
+            <span class="rtp-percent" id="val1">--%</span>
+            <div class="rtp-bar-bg"><div id="bar1" class="rtp-bar-fill"></div></div>
+        </div>
         <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
     </div>
 
     <div class="card">
-        <div class="game-img">PHOTO</div>
+        <img src="https://m.pragmaticplay.com/wp-content/uploads/2022/01/Starlight-Princess.png" class="game-img" alt="Princess">
         <div class="game-title">Starlight Princess</div>
-        <div class="rtp-percent">92%</div>
-        <div class="rtp-bar-bg"><div class="rtp-bar-fill" style="width: 92%;"></div></div>
+        <div class="rtp-container">
+            <span class="rtp-percent" id="val2">--%</span>
+            <div class="rtp-bar-bg"><div id="bar2" class="rtp-bar-fill"></div></div>
+        </div>
         <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
     </div>
 
     <div class="card">
-        <div class="game-img">PHOTO</div>
+        <img src="https://m.pragmaticplay.com/wp-content/uploads/2019/06/Sweet-Bonanza.png" class="game-img" alt="Bonanza">
         <div class="game-title">Sweet Bonanza</div>
-        <div class="rtp-percent">85%</div>
-        <div class="rtp-bar-bg"><div class="rtp-bar-fill" style="width: 85%;"></div></div>
+        <div class="rtp-container">
+            <span class="rtp-percent" id="val3">--%</span>
+            <div class="rtp-bar-bg"><div id="bar3" class="rtp-bar-fill"></div></div>
+        </div>
         <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
     </div>
 
     <div class="card">
-        <div class="game-img">PHOTO</div>
+        <img src="https://m.pragmaticplay.com/wp-content/uploads/2022/07/Sugar-Rush.png" class="game-img" alt="Sugar Rush">
         <div class="game-title">Sugar Rush</div>
-        <div class="rtp-percent">96%</div>
-        <div class="rtp-bar-bg"><div class="rtp-bar-fill" style="width: 96%;"></div></div>
+        <div class="rtp-container">
+            <span class="rtp-percent" id="val4">--%</span>
+            <div class="rtp-bar-bg"><div id="bar4" class="rtp-bar-fill"></div></div>
+        </div>
         <a href="http://www.nakwin44.best/?r=gwb2274" class="btn-play">MAIN SEKARANG</a>
     </div>
 </div>
@@ -64,17 +84,12 @@
 <a href="home.html" class="btn-back">⬅ KEMBALI KE MENU UTAMA</a>
 
 <script>
-    // Script untuk update peratus secara random sikit-sikit biar nampak real
-    setInterval(() => {
-        document.querySelectorAll('.rtp-bar-fill').forEach(bar => {
-            let currentWidth = parseInt(bar.style.width);
-            let change = Math.floor(Math.random() * 3) - 1; // -1, 0, atau 1
-            let newWidth = Math.min(Math.max(currentWidth + change, 70), 99);
-            bar.style.width = newWidth + '%';
-            bar.parentElement.previousElementSibling.innerText = newWidth + '%';
-        });
-    }, 5000);
-</script>
-
-</body>
-</html>
+    function updateRTP() {
+        for (let i = 1; i <= 4; i++) {
+            let valElement = document.getElementById('val' + i);
+            let barElement = document.getElementById('bar' + i);
+            
+            // Random RTP antara 40% ke 98%
+            let randomRtp = Math.floor(Math.random() * (98 - 40 + 1)) + 40;
+            
+            valElement.
