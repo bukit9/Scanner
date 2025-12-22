@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BANTUAN PAGINUMAN (BPG) 2025</title>
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        * { box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
         
         body {
             background-color: #f0f2f5;
@@ -19,78 +19,95 @@
         .main-card {
             width: 90%;
             max-width: 400px;
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             overflow: hidden;
-            border-top: 8px solid #003da5;
+            border-top: 6px solid #003da5;
             position: relative;
         }
 
         .content {
-            padding: 45px 25px;
+            padding: 40px 20px;
             text-align: center;
         }
 
-        /* Logo Tiger Ditanam Terus (Base64) */
-        .logo-container {
-            width: 140px;
-            margin: 0 auto 25px;
+        /* Logo Bulat Tiger Beer */
+        .logo-wrapper {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            border: 4px solid #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .logo-container img {
-            width: 100%;
+        .logo-wrapper img {
+            width: 90%;
             height: auto;
-            display: block;
         }
 
-        .header-title h1 {
-            font-size: 22px;
+        .header-text h2 {
+            font-size: 14px;
+            color: #888;
+            margin: 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .header-text h1 {
+            font-size: 20px;
             color: #1a1a1a;
-            margin: 10px 0 35px 0;
-            font-weight: 800;
+            margin: 5px 0 30px 0;
+            font-weight: bold;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 18px;
-            border: 2px solid #e1e4e8;
-            border-radius: 12px;
-            font-size: 18px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             outline: none;
+            background: #fafafa;
         }
 
-        /* BUTANG TIMBUL 3D */
+        /* Butang Semak Biru & Timbul */
         .btn-semak {
             width: 100%;
-            padding: 20px;
-            background: #003da5;
+            padding: 15px;
+            background: #003da5; /* Biru Gelap Tiger */
             color: white;
             border: none;
-            border-radius: 15px;
-            font-size: 20px;
+            border-radius: 30px;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 8px 0 #002666, 0 12px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 0 #002666, 0 8px 15px rgba(0,0,0,0.2);
             transition: all 0.1s;
             position: relative;
             top: 0;
         }
 
         .btn-semak:active {
-            top: 5px;
-            box-shadow: 0 3px 0 #002666, 0 5px 10px rgba(0,0,0,0.2);
+            top: 4px;
+            box-shadow: 0 2px 0 #002666, 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* LOADING PUSING-PUSING */
-        #loading-overlay {
+        /* Loading Pusing-pusing */
+        #loader {
             display: none;
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(255, 255, 255, 0.9);
-            z-index: 10;
+            z-index: 100;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -110,59 +127,58 @@
             100% { transform: rotate(360deg); }
         }
 
-        .footer-text {
-            margin-top: 40px;
+        .footer {
+            margin-top: 30px;
             font-size: 11px;
             color: #777;
             text-align: justify;
-            line-height: 1.6;
+            line-height: 1.5;
             border-top: 1px solid #eee;
-            padding-top: 25px;
+            padding-top: 15px;
         }
     </style>
 </head>
 <body>
 
     <div class="main-card">
-        <div id="loading-overlay">
+        <div id="loader">
             <div class="spinner"></div>
-            <p style="margin-top: 15px; font-weight: bold; color: #003da5;">Menyemak Kelayakan...</p>
+            <p style="margin-top:15px; font-weight:bold; color:#003da5;">Menyemak rekod...</p>
         </div>
 
         <div class="content">
-            <div class="logo-container">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Logo">
+            <div class="logo-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Tiger Logo">
             </div>
 
-            <div class="header-title">
-                <h2 style="font-size: 13px; color: #888; margin: 0; letter-spacing: 2px;">SEMAKAN</h2>
+            <div class="header-text">
+                <h2>SEMAKAN</h2>
                 <h1>BANTUAN PAGINUMAN (BPG) 2025</h1>
             </div>
 
-            <input type="text" id="ic_input" placeholder="Masukkan No. MyKad">
+            <input type="text" id="icInput" placeholder="Masukkan No. MyKad">
+            <button class="btn-semak" onclick="prosesSemak()">SEMAK</button>
 
-            <button class="btn-semak" onclick="mulaiSemak()">SEMAK</button>
-
-            <div class="footer-text">
+            <div class="footer">
                 Pihak PENGURUSAN PAGINUMAN tidak menghantar sebarang pautan melalui SMS. Pastikan anda tidak berkongsi maklumat peribadi kepada pihak yang tidak bertanggungjawab.
             </div>
         </div>
     </div>
 
     <script>
-        function mulaiSemak() {
-            const ic = document.getElementById('ic_input').value;
-            if(ic.trim() === "") {
-                alert("Sila masukkan No. MyKad bos!");
+        function prosesSemak() {
+            const ic = document.getElementById('icInput').value;
+            if(ic === "") {
+                alert("Sila isi No. MyKad!");
                 return;
             }
 
-            // Tunjukkan loading pusing-pusing
-            document.getElementById('loading-overlay').style.display = 'flex';
+            // Tunjuk loading
+            document.getElementById('loader').style.display = 'flex';
 
             // Tunggu 3 saat baru keluar result
             setTimeout(function() {
-                document.getElementById('loading-overlay').style.display = 'none';
+                document.getElementById('loader').style.display = 'none';
                 alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM");
             }, 3000);
         }
