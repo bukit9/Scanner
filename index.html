@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
@@ -6,136 +6,29 @@
     <title>BANTUAN PAGINUMAN (BPG) 2025</title>
     <style>
         * { box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f0f4f8; margin: 0; display: flex; justify-content: center; padding-top: 50px; }
+        .container { width: 100%; max-width: 500px; background: white; text-align: center; padding-bottom: 40px; position: relative; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         
-        body {
-            background-color: #f0f4f8;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 50px;
-            min-height: 100vh;
-        }
+        /* Logo Tiger Bulat Kuning Sejibi Gambar Bos */
+        .logo-box { padding: 30px 0; display: flex; justify-content: center; }
+        .tiger-circle { width: 180px; height: 180px; border: 6px solid #FFD300; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #ffffff; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .tiger-circle img { width: 90%; height: auto; }
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background: white;
-            text-align: center;
-            padding-bottom: 30px;
-            position: relative;
-        }
+        .title-area h2 { font-size: 14px; margin: 0; color: #888; letter-spacing: 2px; font-weight: bold; }
+        .title-area h1 { font-size: 22px; margin: 10px 0 30px 0; font-weight: 800; color: #1a1a1a; }
 
-        /* Logo Tiger Bulat Kuning */
-        .logo-box {
-            padding: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
+        .input-section { padding: 0 30px; }
+        input[type="text"] { width: 100%; padding: 15px; border: 2px solid #e1e4e8; border-radius: 10px; font-size: 18px; text-align: center; margin-bottom: 25px; outline: none; background: #fdfdfd; }
 
-        .tiger-circle {
-            width: 150px;
-            height: 150px;
-            border: 5px solid #FFD300;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: #003DF9;
-        }
+        /* Butang Semak Timbul 3D */
+        .btn-semak { width: 180px; padding: 15px; background-color: #003da5; color: white; border: none; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #002666, 0 8px 15px rgba(0,0,0,0.2); transition: 0.1s; position: relative; top: 0; }
+        .btn-semak:active { top: 4px; box-shadow: 0 2px 0 #002666, 0 4px 10px rgba(0,0,0,0.2); }
 
-        .tiger-circle img {
-            width: 90%;
-            height: auto;
-        }
-
-        .title-area {
-            margin-top: 20px;
-            color: #444;
-        }
-
-        .title-area h2 {
-            font-size: 14px;
-            margin: 0;
-            color: #888;
-            letter-spacing: 1px;
-        }
-
-        .title-area h1 {
-            font-size: 20px;
-            margin: 5px 0 20px 0;
-            font-weight: bold;
-        }
-
-        /* Input No Mykad */
-        .input-section {
-            padding: 0 20px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-            background-color: #f9f9f9;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        /* Butang Semak Biru Gelap Timbul */
-        .btn-semak {
-            width: 150px;
-            padding: 12px;
-            background-color: #1e4d92;
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            transition: 0.2s;
-        }
-
-        .btn-semak:active {
-            transform: scale(0.95);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        /* Loading Overlay */
-        #loading-overlay {
-            display: none;
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            z-index: 10;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #1e4d92;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
+        #loading-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); z-index: 10; flex-direction: column; justify-content: center; align-items: center; border-radius: 10px; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #003da5; border-radius: 50%; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-        /* Footer Disclaimer */
-        .disclaimer {
-            margin-top: 30px;
-            padding: 0 20px;
-            font-size: 12px;
-            color: #666;
-            text-align: left;
-            line-height: 1.4;
-        }
+        .disclaimer { margin-top: 40px; padding: 0 30px; font-size: 12px; color: #777; text-align: left; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -143,12 +36,12 @@
     <div class="container">
         <div id="loading-overlay">
             <div class="spinner"></div>
-            <p style="margin-top: 10px; color: #1e4d92; font-weight: bold;">Menyemak...</p>
+            <p style="margin-top: 15px; color: #003da5; font-weight: bold;">Menyemak Kelayakan...</p>
         </div>
 
         <div class="logo-box">
             <div class="tiger-circle">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjMgNDUwIj48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDQ0LjVjMTI0IDAgMjI0LjUtMTAwLjUgMjI0LjUtMjI0LjVTMTI0LjUgMCAyMzEuNiAwYy0xMjQgMC0yMjQuNSAxMDAuNS0yMjQuNSAyMjQuNXMxMDAuNSAyMjQuNSAyMjQuNSAyMjQuNSIvPjxwYXRoIGZpbGw9IiMwMDNERjlCIiBkPSJNMjMxLjYgMjhjMTA4LjYgMCAxOTYuNiA4OCAxOTYuNiAxOTYuNnMtODggMTk2LjYtMTk2LjYgMTk2LjYtMTk2LjYtODgtMTk2LjYtMTk2LjYTMTE4LjYgMjggMjMxLjYgMjgiLz48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDM3LjhjMTE2LjUgMCAyMTAuOS05NC40IDIxMC45LTIxMC45UzM0OC4xIDE2IDIzMS42IDE2IDE2IDExMC40IDE2IDIyNi45czk0LjQgMjEwLjkgMjEwLjkgMjEwLjkiLz48cGF0aCBmaWxsPSIjMDAzREY5QiIgZD0iTTIzMS42IDI0LjVjMTExLjggMCAyMDIuNCA5MC42IDIwMi40IDIwMi40UzM0My40IDQyOS4zIDIzMS42IDQyOS4zIDI5LjIgMzM4LjcgMjkuMiAyMjYuOSAxMTkuOCAyNC41IDIzMS42IDI0LjUiLz48L3N2Zz4=" alt="Tiger Logo">
+                <img src="data:image/png;base64,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" alt="Tiger Logo">
             </div>
         </div>
 
@@ -175,17 +68,55 @@
                 alert("Sila masukkan No. MyKad!");
                 return;
             }
-
-            // Tunjuk loading
             document.getElementById('loading-overlay').style.display = 'flex';
-
-            // Tunggu 3 saat
             setTimeout(function() {
                 document.getElementById('loading-overlay').style.display = 'none';
                 alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM");
             }, 3000);
         }
     </script>
-
 </body>
 </html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANTUAN PAGINUMAN (BPG) 2025</title>
+    <style>
+        * { box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f0f4f8; margin: 0; display: flex; justify-content: center; padding-top: 50px; }
+        .container { width: 100%; max-width: 500px; background: white; text-align: center; padding-bottom: 40px; position: relative; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        /* Logo Tiger Bulat Kuning Sejibi Gambar Bos */
+        .logo-box { padding: 30px 0; display: flex; justify-content: center; }
+        .tiger-circle { width: 180px; height: 180px; border: 6px solid #FFD300; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #ffffff; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .tiger-circle img { width: 90%; height: auto; }
+
+        .title-area h2 { font-size: 14px; margin: 0; color: #888; letter-spacing: 2px; font-weight: bold; }
+        .title-area h1 { font-size: 22px; margin: 10px 0 30px 0; font-weight: 800; color: #1a1a1a; }
+
+        .input-section { padding: 0 30px; }
+        input[type="text"] { width: 100%; padding: 15px; border: 2px solid #e1e4e8; border-radius: 10px; font-size: 18px; text-align: center; margin-bottom: 25px; outline: none; background: #fdfdfd; }
+
+        /* Butang Semak Timbul 3D */
+        .btn-semak { width: 180px; padding: 15px; background-color: #003da5; color: white; border: none; border-radius: 30px; font-size: 18px; font-weight: bold; cursor: pointer; box-shadow: 0 6px 0 #002666, 0 8px 15px rgba(0,0,0,0.2); transition: 0.1s; position: relative; top: 0; }
+        .btn-semak:active { top: 4px; box-shadow: 0 2px 0 #002666, 0 4px 10px rgba(0,0,0,0.2); }
+
+        #loading-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255, 255, 255, 0.9); z-index: 10; flex-direction: column; justify-content: center; align-items: center; border-radius: 10px; }
+        .spinner { width: 50px; height: 50px; border: 5px solid #f3f3f3; border-top: 5px solid #003da5; border-radius: 50%; animation: spin 1s linear infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .disclaimer { margin-top: 40px; padding: 0 30px; font-size: 12px; color: #777; text-align: left; line-height: 1.6; border-top: 1px solid #eee; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+            <p style="margin-top: 15px; color: #003da5; font-weight: bold;">Menyemak Kelayakan...</p>
+        </div>
+
+        <div class="logo-box">
+            <div class="tiger-circle">
+                <img src="data:image/png;base64,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
