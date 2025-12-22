@@ -3,98 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARAMAITI MATRIX ENGINE</title>
+    <title>ARAMAITI HUB - VIP SYSTEM</title>
     <style>
-        :root { --matrix: #00ff41; --danger: #ff003c; --warn: #ffcc00; --bg: #000; }
-        body { background: var(--bg); color: #fff; font-family: 'Courier New', monospace; margin: 0; }
-        
-        /* Header Neon */
-        .header { padding: 20px; border-bottom: 2px solid var(--matrix); background: #000; text-align: center; box-shadow: 0 0 15px var(--matrix); }
-        .header h1 { color: var(--matrix); margin: 0; font-size: 24px; text-shadow: 0 0 10px var(--matrix); letter-spacing: 4px; font-weight: 900; }
-        
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
-        
-        /* Card Matrix */
-        .card { background: #080808; border: 1px solid #222; border-radius: 8px; padding: 10px; position: relative; overflow: hidden; }
-        .card.active { border-color: var(--matrix); box-shadow: inset 0 0 10px rgba(0, 255, 65, 0.3); }
-
-        /* Box Gambar dengan Fallback */
-        .img-box { 
-            width: 100%; height: 110px; background: #111; border-radius: 5px; 
-            overflow: hidden; position: relative; border: 1px solid #333;
-            display: flex; align-items: center; justify-content: center;
+        * { box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        body { 
+            background: #f4f7f6; 
+            margin: 0; 
+            color: #333;
         }
-        .game-img { width: 100%; height: 100%; object-fit: cover; z-index: 1; }
+        /* Header Macam Apps Pro */
+        .header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #444 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 4px solid #ffcc00;
+        }
+        .container { padding: 20px; max-width: 500px; margin: auto; }
         
-        /* Laser Scan Effect */
-        .laser { position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--matrix); box-shadow: 0 0 15px var(--matrix); animation: scan 2.5s linear infinite; z-index: 2; }
-        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
+        /* Card Checker (Gaya LIGS) */
+        .check-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-top: -40px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 16px;
+            text-align: center;
+        }
+        .btn-gold {
+            background: linear-gradient(90deg, #ffcc00, #b89600);
+            color: black;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-        .game-name { font-size: 10px; color: #fff; margin: 10px 0 5px; font-weight: bold; text-transform: uppercase; text-align: left; }
-        .rtp-display { font-size: 32px; font-weight: 900; color: var(--matrix); text-shadow: 0 0 8px var(--matrix); text-align: left; }
-        .status-tag { font-size: 9px; font-weight: bold; text-transform: uppercase; margin-top: 5px; text-align: left; display: block; }
+        /* Grid Game (Professional Look) */
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .game-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+        .game-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            background: #eee;
+        }
+        .game-info { padding: 10px; text-align: center; }
+        .rtp-box {
+            background: #f8f8f8;
+            border-radius: 5px;
+            padding: 5px;
+            margin-top: 5px;
+        }
+        .rtp-val { 
+            font-weight: 900; 
+            color: #2ecc71; 
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>ARAMAITI MATRIX</h1>
-    <div style="font-size: 10px; color: var(--matrix); margin-top: 5px;">SYSTEM STATUS: <span id="sys">BYPASSING...</span></div>
+    <h2 style="margin:0; letter-spacing: 2px;">ARAMAITI HUB</h2>
+    <p style="font-size: 12px; opacity: 0.8;">Sistem Semakan & Scanner VIP v2.0</p>
 </div>
 
-<div id="engine-grid" class="grid"></div>
+<div class="container">
+    <div class="check-card">
+        <h3 style="margin-top:0; color: #444;">SEMAKAN STATUS BANTUAN</h3>
+        <input type="text" id="ic" placeholder="Masukkan No. MyKad">
+        <button class="btn-gold" onclick="semak()">SEMAK SEKARANG</button>
+    </div>
+
+    <h4 style="margin-top:30px; color: #666; border-left: 4px solid #ffcc00; padding-left: 10px;">LIVE SCANNER RTP</h4>
+
+    <div class="game-grid">
+        <div class="game-item">
+            <img class="game-img" src="https://img.freepik.com/free-vector/olympus-gods-background_23-2148493134.jpg" alt="Olympus">
+            <div class="game-info">
+                <div style="font-size: 12px; font-weight: bold;">GATES OF OLYMPUS</div>
+                <div class="rtp-box">RTP: <span class="rtp-val">96%</span></div>
+            </div>
+        </div>
+        <div class="game-item">
+            <img class="game-img" src="https://img.freepik.com/premium-photo/anime-princess-with-golden-hair-crown_124507-28518.jpg" alt="Starlight">
+            <div class="game-info">
+                <div style="font-size: 12px; font-weight: bold;">STARLIGHT PRINCESS</div>
+                <div class="rtp-box">RTP: <span class="rtp-val">98%</span></div>
+            </div>
+        </div>
+        <div class="game-item">
+            <img class="game-img" src="https://t3.ftcdn.net/jpg/05/61/77/22/360_F_561772271_9V8kLz7oQ9WlJc5Z8zF6V6uB3n9M2W7o.jpg" alt="Mahjong">
+            <div class="game-info">
+                <div style="font-size: 12px; font-weight: bold;">MAHJONG WAYS 2</div>
+                <div class="rtp-box">RTP: <span class="rtp-val">91%</span></div>
+            </div>
+        </div>
+        <div class="game-item">
+            <img class="game-img" src="https://img.freepik.com/free-photo/vibrant-candy-background_23-2150170044.jpg" alt="Sweet">
+            <div class="game-info">
+                <div style="font-size: 12px; font-weight: bold;">SWEET BONANZA</div>
+                <div class="rtp-box">RTP: <span class="rtp-val">94%</span></div>
+            </div>
+        </div>
+    </div>
+
+    <p style="font-size: 10px; color: #aaa; text-align: center; margin-top: 30px;">
+        © 2025 ARAMAITI HUB. Segala maklumat adalah sulit dan untuk kegunaan ahli VIP sahaja.
+    </p>
+</div>
 
 <script>
-    // Menggunakan link gambar yang lebih stabil dari CDN
-    const games = [
-        { n: "GATES OLYMPUS", i: "https://w7.pngwing.com/pngs/351/365/png-transparent-gates-of-olympus-pragmatic-play-thumbnail.png" },
-        { n: "STARLIGHT", i: "https://w7.pngwing.com/pngs/448/202/png-transparent-starlight-princess-pragmatic-play-thumbnail.png" },
-        { n: "SWEET BONANZA", i: "https://w7.pngwing.com/pngs/454/650/png-transparent-sweet-bonanza-pragmatic-play-thumbnail.png" },
-        { n: "SUGAR RUSH", i: "https://w7.pngwing.com/pngs/23/343/png-transparent-sugar-rush-pragmatic-play-thumbnail.png" },
-        { n: "MAHJONG WAYS", i: "https://w7.pngwing.com/pngs/79/1018/png-transparent-mahjong-ways-2-pg-soft-thumbnail.png" },
-        { n: "BOXING KING", i: "https://static.jiligames.com/official/web/69a37a77884241689360349377484347.png" }
-    ];
-
-    const grid = document.getElementById('engine-grid');
-    games.forEach((g, i) => {
-        grid.innerHTML += `
-            <div class="card" id="card${i}">
-                <div class="img-box">
-                    <img src="${g.i}" class="game-img" onerror="this.parentElement.style.background='#111'; this.style.display='none';">
-                    <div style="position:absolute; color:#333; font-size:8px; z-index:0;">DECRYPTING...</div>
-                    <div class="laser"></div>
-                </div>
-                <div class="game-name">${g.n}</div>
-                <div class="rtp-display" id="rtp${i}">--%</div>
-                <span class="status-tag" id="stat${i}">INITIALIZING...</span>
-            </div>
-        `;
-    });
-
-    function run() {
-        games.forEach((_, i) => {
-            let p = Math.floor(Math.random() * (99 - 45 + 1)) + 45;
-            let val = document.getElementById('rtp'+i);
-            let st = document.getElementById('stat'+i);
-            let cd = document.getElementById('card'+i);
-
-            val.innerText = p + '%';
-            if(p < 65) {
-                val.style.color = 'var(--danger)'; st.innerText = "DATA_WEAK"; st.style.color = 'var(--danger)';
-                cd.classList.remove('active');
-            } else if(p < 85) {
-                val.style.color = 'var(--warn)'; st.innerText = "SIGNAL_STABLE"; st.style.color = 'var(--warn)';
-                cd.classList.remove('active');
-            } else {
-                val.style.color = 'var(--matrix)'; st.innerText = "DATABASE_CRACKED"; st.style.color = 'var(--matrix)';
-                cd.classList.add('active');
-            }
-        });
-        document.getElementById('sys').innerText = "V." + (Math.random()*100).toFixed(0) + "_ACTIVE";
+    function semak() {
+        let ic = document.getElementById('ic').value;
+        if(ic === "") {
+            alert("Sila isi No. MyKad bos.");
+        } else {
+            alert("Nombor MyKad: " + ic + "\nStatus: Sedang Diproses. Sila hubungi Admin.");
+        }
     }
-
-    run();
-    setInterval(run, 4000);
 </script>
+
 </body>
 </html>
