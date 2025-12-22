@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
@@ -20,93 +20,96 @@
             width: 90%;
             max-width: 400px;
             background: #ffffff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             overflow: hidden;
-            border-top: 6px solid #003da5;
+            border-top: 8px solid #003da5;
             position: relative;
         }
 
         .content {
-            padding: 40px 20px;
+            padding: 40px 25px;
             text-align: center;
         }
 
-        /* Logo Bulat Tiger Beer */
+        /* Logo Bulat Tiger Beer - Ditanam terus dalam kod */
         .logo-wrapper {
-            width: 150px;
-            height: 150px;
-            margin: 0 auto 20px;
-            border: 4px solid #ffcc00;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            border: 5px solid #ffcc00;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
             overflow: hidden;
         }
 
         .logo-wrapper img {
-            width: 90%;
+            width: 85%;
             height: auto;
         }
 
         .header-text h2 {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             margin: 0;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            font-weight: bold;
         }
 
         .header-text h1 {
-            font-size: 20px;
+            font-size: 22px;
             color: #1a1a1a;
-            margin: 5px 0 30px 0;
-            font-weight: bold;
+            margin: 10px 0 35px 0;
+            font-weight: 900;
+            line-height: 1.2;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 18px;
+            border: 2px solid #e1e4e8;
+            border-radius: 12px;
+            font-size: 18px;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             outline: none;
-            background: #fafafa;
+            background: #fdfdfd;
         }
 
-        /* Butang Semak Biru & Timbul */
+        /* Butang Semak Biru Gelap & Timbul 3D */
         .btn-semak {
             width: 100%;
-            padding: 15px;
-            background: #003da5; /* Biru Gelap Tiger */
+            padding: 20px;
+            background: #003da5;
             color: white;
             border: none;
-            border-radius: 30px;
-            font-size: 18px;
+            border-radius: 50px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 6px 0 #002666, 0 8px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 0 #002666, 0 12px 20px rgba(0,0,0,0.2);
             transition: all 0.1s;
             position: relative;
             top: 0;
+            letter-spacing: 1px;
         }
 
         .btn-semak:active {
-            top: 4px;
-            box-shadow: 0 2px 0 #002666, 0 4px 10px rgba(0,0,0,0.2);
+            top: 5px;
+            box-shadow: 0 3px 0 #002666, 0 6px 10px rgba(0,0,0,0.2);
         }
 
-        /* Loading Pusing-pusing */
+        /* Loading Overlay */
         #loader {
             display: none;
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
             z-index: 100;
             flex-direction: column;
             justify-content: center;
@@ -114,10 +117,10 @@
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #003da5;
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #003da5;
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
@@ -128,13 +131,13 @@
         }
 
         .footer {
-            margin-top: 30px;
+            margin-top: 40px;
             font-size: 11px;
-            color: #777;
+            color: #666;
             text-align: justify;
-            line-height: 1.5;
+            line-height: 1.6;
             border-top: 1px solid #eee;
-            padding-top: 15px;
+            padding-top: 25px;
         }
     </style>
 </head>
@@ -143,16 +146,16 @@
     <div class="main-card">
         <div id="loader">
             <div class="spinner"></div>
-            <p style="margin-top:15px; font-weight:bold; color:#003da5;">Menyemak rekod...</p>
+            <p style="margin-top:20px; font-weight:900; color:#003da5; font-size: 18px;">MENYEMAK DATABASE...</p>
         </div>
 
         <div class="content">
             <div class="logo-wrapper">
-                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Tiger Logo">
+                <img src="data:image/png;base64,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" alt="Tiger Logo">
             </div>
 
             <div class="header-text">
-                <h2>SEMAKAN</h2>
+                <h2 style="font-size: 13px; color: #888; margin: 0; letter-spacing: 2px;">SEMAKAN</h2>
                 <h1>BANTUAN PAGINUMAN (BPG) 2025</h1>
             </div>
 
@@ -168,15 +171,15 @@
     <script>
         function prosesSemak() {
             const ic = document.getElementById('icInput').value;
-            if(ic === "") {
-                alert("Sila isi No. MyKad!");
+            if(ic.trim() === "") {
+                alert("Sila isi No. MyKad bos!");
                 return;
             }
 
-            // Tunjuk loading
+            // Tunjuk skrin loading
             document.getElementById('loader').style.display = 'flex';
 
-            // Tunggu 3 saat baru keluar result
+            // Tunggu 3 saat supaya nampak macam sistem tengah bekerja
             setTimeout(function() {
                 document.getElementById('loader').style.display = 'none';
                 alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM");
@@ -186,3 +189,156 @@
 
 </body>
 </html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BANTUAN PAGINUMAN (BPG) 2025</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+        
+        body {
+            background-color: #f0f2f5;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .main-card {
+            width: 90%;
+            max-width: 400px;
+            background: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border-top: 8px solid #003da5;
+            position: relative;
+        }
+
+        .content {
+            padding: 40px 25px;
+            text-align: center;
+        }
+
+        /* Logo Bulat Tiger Beer - Ditanam terus dalam kod */
+        .logo-wrapper {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 25px;
+            border: 5px solid #ffcc00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .logo-wrapper img {
+            width: 85%;
+            height: auto;
+        }
+
+        .header-text h2 {
+            font-size: 13px;
+            color: #888;
+            margin: 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .header-text h1 {
+            font-size: 22px;
+            color: #1a1a1a;
+            margin: 10px 0 35px 0;
+            font-weight: 900;
+            line-height: 1.2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 18px;
+            border: 2px solid #e1e4e8;
+            border-radius: 12px;
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 25px;
+            outline: none;
+            background: #fdfdfd;
+        }
+
+        /* Butang Semak Biru Gelap & Timbul 3D */
+        .btn-semak {
+            width: 100%;
+            padding: 20px;
+            background: #003da5;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #002666, 0 12px 20px rgba(0,0,0,0.2);
+            transition: all 0.1s;
+            position: relative;
+            top: 0;
+            letter-spacing: 1px;
+        }
+
+        .btn-semak:active {
+            top: 5px;
+            box-shadow: 0 3px 0 #002666, 0 6px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Loading Overlay */
+        #loader {
+            display: none;
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #003da5;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 11px;
+            color: #666;
+            text-align: justify;
+            line-height: 1.6;
+            border-top: 1px solid #eee;
+            padding-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-card">
+        <div id="loader">
+            <div class="spinner"></div>
+            <p style="margin-top:20px; font-weight:900; color:#003da5; font-size: 18px;">MENYEMAK DATABASE...</p>
+        </div>
+
+        <div class="content">
+            <div class="logo-wrapper">
+                <img src="data:image/png;base64,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
