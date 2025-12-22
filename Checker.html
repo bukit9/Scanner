@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARAMAITI CHECKER - SEMAKAN 2025</title>
+    <style>
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body {
+            /* Background gradient sebijik macam screenshot bos */
+            background: linear-gradient(180deg, #b192ff 0%, #e8dbff 50%, #ffffff 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo-circle {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 2px solid #4caf50; /* Warna hijau logo LIGS */
+        }
+
+        .logo-circle img { width: 70%; }
+
+        .title-section h2 {
+            color: #555;
+            font-size: 18px;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .title-section h1 {
+            color: #444;
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            outline: none;
+            color: #666;
+        }
+
+        input[type="text"]::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+
+        .btn-semak {
+            width: 100%;
+            padding: 15px;
+            border-radius: 50px;
+            border: none;
+            /* Gradient Biru ke Magenta */
+            background: linear-gradient(90deg, #00d2ff 0%, #ff00ff 100%);
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            transition: 0.3s;
+        }
+
+        .btn-semak:hover {
+            transform: scale(1.02);
+            opacity: 0.9;
+        }
+
+        .footer-text {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #777;
+            line-height: 1.5;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="logo-circle">
+            <span style="font-weight: bold; color: #4caf50;">ARAMAITI</span>
+        </div>
+
+        <div class="title-section">
+            <h2>SEMAKAN</h2>
+            <h1>BANTUAN ARAMAITI HUB (BAH) 2025</h1>
+        </div>
+
+        <input type="text" id="icInput" placeholder="Masukkan No. MyKad">
+
+        <button class="btn-semak" onclick="checkStatus()">SEMAK</button>
+
+        <p class="footer-text">
+            Pihak ARAMAITI HUB tidak menghantar pautan bantuan melalui Pesanan Ringkas (SMS). Anda dinasihatkan sentiasa berhati-hati apabila menerima sebarang pautan dari pihak yang tidak bertanggungjawab.
+        </p>
+    </div>
+
+    <script>
+        function checkStatus() {
+            let ic = document.getElementById('icInput').value;
+            if(ic === "") {
+                alert("Sila masukkan No. MyKad bos!");
+            } else {
+                alert("Sedang menyemak status untuk MyKad: " + ic + "\n\nKeputusan: Sila hubungi admin untuk pengesahan lanjut.");
+            }
+        }
+    </script>
+
+</body>
+</html>
