@@ -13,25 +13,25 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .main-card {
             width: 90%;
             max-width: 400px;
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             overflow: hidden;
             border-top: 8px solid #003da5;
         }
 
         .content {
-            padding: 40px 25px;
+            padding: 45px 25px;
             text-align: center;
         }
 
-        /* Logo Tiger - Saya guna link baru yang gerenti muncul */
+        /* Logo Tiger - Ditanam terus dalam kod (Base64) supaya gerenti muncul */
         .logo-container {
             width: 140px;
             margin: 0 auto 25px;
@@ -39,58 +39,67 @@
 
         .logo-container img {
             width: 100%;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            height: auto;
         }
 
         .header-title h2 {
-            font-size: 14px;
+            font-size: 13px;
             color: #888;
             margin: 0;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             font-weight: bold;
+            text-transform: uppercase;
         }
 
         .header-title h1 {
             font-size: 22px;
             color: #1a1a1a;
-            margin: 8px 0 35px 0;
+            margin: 10px 0 35px 0;
             font-weight: 800;
+            line-height: 1.2;
         }
 
         input[type="text"] {
             width: 100%;
             padding: 18px;
             border: 2px solid #e1e4e8;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 18px;
             text-align: center;
             margin-bottom: 25px;
             outline: none;
             background: #fdfdfd;
+            transition: 0.3s;
         }
 
-        /* BUTANG SEMAK TIMBUL (3D EFFECT) */
+        input[type="text"]:focus {
+            border-color: #003da5;
+            box-shadow: 0 0 10px rgba(0, 61, 165, 0.1);
+        }
+
+        /* BUTANG SEMAK TIMBUL (PRO 3D EFFECT) */
         .btn-semak {
             width: 100%;
-            padding: 18px;
+            padding: 20px;
             background: #003da5;
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 15px;
             font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            /* Rahsia Timbul: Shadow bawah gelap */
+            letter-spacing: 1px;
+            /* Kesan Timbul Berasaskan Shadow */
             box-shadow: 0 8px 0 #002666, 0 12px 20px rgba(0,0,0,0.2);
-            transition: all 0.1s;
+            transition: all 0.1s ease;
             position: relative;
             top: 0;
         }
 
-        /* Kesan bila ditekan */
+        /* Kesan bila butang ditekan oleh jari */
         .btn-semak:active {
-            top: 4px;
-            box-shadow: 0 4px 0 #002666, 0 6px 10px rgba(0,0,0,0.2);
+            top: 5px;
+            box-shadow: 0 3px 0 #002666, 0 5px 10px rgba(0,0,0,0.2);
         }
 
         .footer-text {
@@ -100,7 +109,7 @@
             text-align: justify;
             line-height: 1.6;
             border-top: 1px solid #eee;
-            padding-top: 20px;
+            padding-top: 25px;
         }
     </style>
 </head>
@@ -108,8 +117,9 @@
 
     <div class="main-card">
         <div class="content">
+            
             <div class="logo-container">
-                <img src="https://www.tigerbeer.com/themes/custom/tigerbeer_global/logo.svg" alt="Tiger Logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjMgNDUwIj48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDQ0LjVjMTI0IDAgMjI0LjUtMTAwLjUgMjI0LjUtMjI0LjVTMTI0LjUgMCAyMzEuNiAwYy0xMjQgMC0yMjQuNSAxMDAuNS0yMjQuNSAyMjQuNXMxMDAuNSAyMjQuNSAyMjQuNSAyMjQuNSIvPjxwYXRoIGZpbGw9IiMwMDNERjlCIiBkPSJNMjMxLjYgMjhjMTA4LjYgMCAxOTYuNiA4OCAxOTYuNiAxOTYuNnMtODggMTk2LjYtMTk2LjYgMTk2LjYtMTk2LjYtODgtMTk2LjYtMTk2LjZTMTE4LjYgMjggMjMxLjYgMjgiLz48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDM3LjhjMTE2LjUgMCAyMTAuOS05NC40IDIxMC45LTIxMC45UzM0OC4xIDE2IDIzMS42IDE2IDE2IDExMC40IDE2IDIyNi45czk0LjQgMjEwLjkgMjEwLjkgMjEwLjkiLz48cGF0aCBmaWxsPSIjMDAzREY5QiIgZD0iTTIzMS42IDI0LjVjMTExLjggMCAyMDIuNCA5MC42IDIwMi40IDIwMi40UzM0My40IDQyOS4zIDIzMS42IDQyOS4zIDI5LjIgMzM4LjcgMjkuMiAyMjYuOSAxMTkuOCAyNC41IDIzMS42IDI0LjUiLz48L3N2Zz4=" alt="Tiger Logo">
             </div>
 
             <div class="header-title">
@@ -117,7 +127,7 @@
                 <h1>BANTUAN PAGINUMAN (BPG) 2025</h1>
             </div>
 
-            <input type="text" id="ic_input" placeholder="Masukkan No. MyKad">
+            <input type="text" id="ic_input" placeholder="Masukkan No. MyKad" autocomplete="off">
 
             <button class="btn-semak" onclick="semak()">SEMAK</button>
 
@@ -130,9 +140,10 @@
     <script>
         function semak() {
             const ic = document.getElementById('ic_input').value;
-            if(ic === "") {
+            if(ic.trim() === "") {
                 alert("Sila isi No. MyKad dulu bos!");
             } else {
+                // Popup permintaan bos
                 alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM");
             }
         }
