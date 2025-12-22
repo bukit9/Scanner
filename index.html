@@ -16,7 +16,6 @@
             min-height: 100vh;
         }
 
-        /* Card Utama */
         .main-card {
             width: 90%;
             max-width: 400px;
@@ -33,6 +32,7 @@
             text-align: center;
         }
 
+        /* Logo Tiger Ditanam Terus (Base64) */
         .logo-container {
             width: 140px;
             margin: 0 auto 25px;
@@ -41,6 +41,7 @@
         .logo-container img {
             width: 100%;
             height: auto;
+            display: block;
         }
 
         .header-title h1 {
@@ -83,7 +84,7 @@
             box-shadow: 0 3px 0 #002666, 0 5px 10px rgba(0,0,0,0.2);
         }
 
-        /* LOADING OVERLAY */
+        /* LOADING PUSING-PUSING */
         #loading-overlay {
             display: none;
             position: absolute;
@@ -125,12 +126,12 @@
     <div class="main-card">
         <div id="loading-overlay">
             <div class="spinner"></div>
-            <p style="margin-top: 15px; font-weight: bold; color: #003da5;">Menyemak Database...</p>
+            <p style="margin-top: 15px; font-weight: bold; color: #003da5;">Menyemak Kelayakan...</p>
         </div>
 
         <div class="content">
             <div class="logo-container">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NjMgNDUwIj48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDQ0LjVjMTI0IDAgMjI0LjUtMTAwLjUgMjI0LjUtMjI0LjVTMTI0LjUgMCAyMzEuNiAwYy0xMjQgMC0yMjQuNSAxMDAuNS0yMjQuNSAyMjQuNXMxMDAuNSAyMjQuNSAyMjQuNSAyMjQuNSIvPjxwYXRoIGZpbGw9IiMwMDNERjlCIiBkPSJNMjMxLjYgMjhjMTA4LjYgMCAxOTYuNiA4OCAxOTYuNiAxOTYuNnMtODggMTk2LjYtMTk2LjYgMTk2LjYtMTk2LjYtODgtMTk2LjYtMTk2LjYTMTE4LjYgMjggMjMxLjYgMjgiLz48cGF0aCBmaWxsPSIjRkZEMzAwIiBkPSJNMjMxLjYgNDM3LjhjMTE2LjUgMCAyMTAuOS05NC40IDIxMC45LTIxMC45UzM0OC4xIDE2IDIzMS42IDE2IDE2IDExMC40IDE2IDIyNi45czk0LjQgMjEwLjkgMjEwLjkgMjEwLjkiLz48cGF0aCBmaWxsPSIjMDAzREY5QiIgZD0iTTIzMS42IDI0LjVjMTExLjggMCAyMDIuNCA5MC42IDIwMi40IDIwMi40UzM0My40IDQyOS4zIDIzMS42IDQyOS4zIDI5LjIgMzM4LjcgMjkuMiAyMjYuOSAxMTkuOCAyNC41IDIzMS42IDI0LjUiLz48L3N2Zz4=" alt="Tiger Logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Logo">
             </div>
 
             <div class="header-title">
@@ -156,7 +157,7 @@
                 return;
             }
 
-            // Tunjuk loading pusing-pusing
+            // Tunjukkan loading pusing-pusing
             document.getElementById('loading-overlay').style.display = 'flex';
 
             // Tunggu 3 saat baru keluar result
