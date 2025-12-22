@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BANTUAN PAGINUMAN (BPG) 2025</title>
     <style>
-        * { box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
         
         body {
             background-color: #f0f2f5;
@@ -17,13 +17,13 @@
         }
 
         .main-card {
-            width: 100%;
+            width: 90%;
             max-width: 400px;
             background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             overflow: hidden;
-            border-top: 6px solid #003da5; /* Biru Rasmi Tiger */
+            border-top: 8px solid #003da5;
         }
 
         .content {
@@ -31,88 +31,72 @@
             text-align: center;
         }
 
-        /* Logo Tiger Beer */
+        /* Logo Tiger - Saya guna link baru yang gerenti muncul */
         .logo-container {
-            width: 120px;
-            height: 120px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 140px;
+            margin: 0 auto 25px;
         }
 
         .logo-container img {
             width: 100%;
-            height: auto;
-            object-fit: contain;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
         }
 
         .header-title h2 {
             font-size: 14px;
-            color: #777;
+            color: #888;
             margin: 0;
             letter-spacing: 2px;
-            font-weight: 600;
+            font-weight: bold;
         }
 
         .header-title h1 {
-            font-size: 20px;
+            font-size: 22px;
             color: #1a1a1a;
-            margin: 8px 0 30px 0;
+            margin: 8px 0 35px 0;
             font-weight: 800;
-            line-height: 1.2;
-        }
-
-        /* Input No MyKad */
-        .input-group {
-            margin-bottom: 20px;
         }
 
         input[type="text"] {
             width: 100%;
-            padding: 16px;
-            border: 1px solid #ced4da;
-            border-radius: 8px;
-            font-size: 16px;
+            padding: 18px;
+            border: 2px solid #e1e4e8;
+            border-radius: 10px;
+            font-size: 18px;
             text-align: center;
-            transition: border-color 0.3s;
+            margin-bottom: 25px;
             outline: none;
-            background-color: #f8f9fa;
+            background: #fdfdfd;
         }
 
-        input[type="text"]:focus {
-            border-color: #003da5;
-            background-color: #fff;
-        }
-
-        /* Butang Semak TIMBUL (3D Effect) */
+        /* BUTANG SEMAK TIMBUL (3D EFFECT) */
         .btn-semak {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(180deg, #004dc9 0%, #003da5 100%);
+            padding: 18px;
+            background: #003da5;
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 18px;
+            border-radius: 12px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
-            text-transform: uppercase;
-            /* Kesan Timbul */
-            box-shadow: 0 6px 0 #002666, 0 8px 15px rgba(0,0,0,0.2);
+            /* Rahsia Timbul: Shadow bawah gelap */
+            box-shadow: 0 8px 0 #002666, 0 12px 20px rgba(0,0,0,0.2);
             transition: all 0.1s;
             position: relative;
             top: 0;
         }
 
+        /* Kesan bila ditekan */
         .btn-semak:active {
-            top: 4px; /* Butang nampak kena tekan */
-            box-shadow: 0 2px 0 #002666, 0 4px 10px rgba(0,0,0,0.2);
+            top: 4px;
+            box-shadow: 0 4px 0 #002666, 0 6px 10px rgba(0,0,0,0.2);
         }
 
-        .footer-disclaimer {
-            margin-top: 35px;
+        .footer-text {
+            margin-top: 40px;
             font-size: 11px;
-            color: #6c757d;
+            color: #777;
             text-align: justify;
             line-height: 1.6;
             border-top: 1px solid #eee;
@@ -125,7 +109,7 @@
     <div class="main-card">
         <div class="content">
             <div class="logo-container">
-                <img src="https://www.tigerbeer.com/themes/custom/tigerbeer_global/logo.svg" alt="Tiger Beer">
+                <img src="https://www.tigerbeer.com/themes/custom/tigerbeer_global/logo.svg" alt="Tiger Logo">
             </div>
 
             <div class="header-title">
@@ -133,25 +117,22 @@
                 <h1>BANTUAN PAGINUMAN (BPG) 2025</h1>
             </div>
 
-            <div class="input-group">
-                <input type="text" id="ic_check" placeholder="Masukkan No. MyKad" autocomplete="off">
-            </div>
+            <input type="text" id="ic_input" placeholder="Masukkan No. MyKad">
 
-            <button class="btn-semak" onclick="doCheck()">SEMAK</button>
+            <button class="btn-semak" onclick="semak()">SEMAK</button>
 
-            <div class="footer-disclaimer">
+            <div class="footer-text">
                 Pihak PENGURUSAN PAGINUMAN tidak menghantar sebarang pautan melalui SMS. Pastikan anda tidak berkongsi maklumat peribadi kepada pihak yang tidak bertanggungjawab.
             </div>
         </div>
     </div>
 
     <script>
-        function doCheck() {
-            const val = document.getElementById('ic_check').value;
-            if(val.trim() === "") {
-                alert("Sila masukkan No. MyKad bos!");
+        function semak() {
+            const ic = document.getElementById('ic_input').value;
+            if(ic === "") {
+                alert("Sila isi No. MyKad dulu bos!");
             } else {
-                // Popup permintaan bos
                 alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM");
             }
         }
