@@ -9,13 +9,41 @@
             --gov-blue: #002b5c;
             --gov-light-blue: #eef2f7;
             --gov-gold: #c5a059;
+            --christmas-red: #cc0000;
+            --christmas-green: #008000;
         }
 
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            background-color: var(--gov-light-blue); 
+            background: url('https://images.unsplash.com/photo-1606847255160-c30291932973?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed; /* Latar Belakang Krismas */
+            background-size: cover;
             margin: 0; 
             color: #333;
+            overflow-x: hidden; /* Elak scroll horizontal sebab salji */
+            position: relative;
+        }
+
+        /* Kesan Salji Turun (Snowfall Effect) */
+        .snow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999; /* Pastikan salji di atas segalanya */
+        }
+        .snow i {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: snowfall linear infinite;
+        }
+        @keyframes snowfall {
+            0% { transform: translateY(-100%) translateX(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(100%) translateX(20px); opacity: 0; }
         }
 
         .gov-header {
@@ -25,22 +53,26 @@
             text-align: left;
             font-size: 11px;
             font-weight: bold;
-            border-bottom: 3px solid var(--gov-gold);
+            border-bottom: 3px solid var(--christmas-red); /* Sentuhan Krismas pada border */
             letter-spacing: 1px;
+            position: relative; /* Untuk z-index salji */
+            z-index: 10000;
         }
 
         .container {
             max-width: 480px;
             margin: 30px auto;
             padding: 0 15px;
+            position: relative;
+            z-index: 1000; /* Pastikan card di atas salji */
         }
 
         .card { 
-            background: white; 
+            background: rgba(255, 255, 255, 0.95); /* Sedikit lutsinar agar background Krismas nampak */
             padding: 35px 25px; 
             border-radius: 8px; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border-top: 6px solid var(--gov-blue);
+            border-top: 6px solid var(--christmas-green); /* Sentuhan Krismas pada border */
             text-align: center;
         }
 
@@ -48,12 +80,12 @@
         .branding h2 { font-size: 22px; color: var(--gov-blue); margin: 5px 0 25px; font-weight: 800; }
 
         .alert-box {
-            background: #fff9db;
-            border-left: 4px solid #fab005;
+            background: #ffe3e3; /* Warna amaran Krismas */
+            border-left: 4px solid var(--christmas-red);
             padding: 12px;
             margin-bottom: 25px;
             font-size: 12px;
-            color: #664d03;
+            color: #b00000;
             text-align: left;
             line-height: 1.4;
         }
@@ -71,34 +103,33 @@
             background: #f8f9fa;
         }
         
-        input:focus { border-color: var(--gov-blue); background: #fff; box-shadow: 0 0 0 3px rgba(0,43,92,0.1); }
+        input:focus { border-color: var(--christmas-green); background: #fff; box-shadow: 0 0 0 3px rgba(0,128,0,0.1); }
 
         .btn-semak { 
             width: 100%; 
             padding: 16px; 
             border: none; 
             border-radius: 4px; 
-            background: var(--gov-blue); 
+            background: var(--christmas-red); /* Butang Merah Krismas */
             color: white; 
             font-size: 16px; 
             font-weight: bold; 
             cursor: pointer; 
-            box-shadow: 0 4px 0 #001a38;
+            box-shadow: 0 4px 0 #800000;
             transition: 0.2s;
         }
 
-        .btn-semak:active { transform: translateY(2px); box-shadow: 0 2px 0 #001a38; }
+        .btn-semak:active { transform: translateY(2px); box-shadow: 0 2px 0 #800000; }
 
         #loading-area { display: none; margin-top: 25px; }
         .spinner {
             width: 25px; height: 25px; border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--gov-blue); border-radius: 50%;
+            border-top: 3px solid var(--christmas-red); border-radius: 50%; /* Spinner Merah Krismas */
             animation: spin 1s linear infinite; margin: 0 auto 10px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        #loading-text { font-size: 13px; font-weight: 600; color: var(--gov-blue); font-style: italic; }
+        #loading-text { font-size: 13px; font-weight: 600; color: var(--christmas-red); font-style: italic; }
         
-        /* Penafian Tulisan Kecil Sesuai Arahan Bos */
         .penafian {
             font-size: 10px;
             color: #999;
@@ -116,13 +147,15 @@
             color: #bbb;
             margin-top: 20px;
             text-transform: uppercase;
+            position: relative;
+            z-index: 10000;
         }
     </style>
 </head>
 <body>
 
-<div class="gov-header">
-    PORTAL RASMI KERAJAAN MALAYSIA • BPG ONLINE v2.0
+<div class="snow" id="snow-container"></div> <div class="gov-header">
+    PORTAL RASMI KERAJAAN MALAYSIA • BPG ONLINE v3.0
 </div>
 
 <div class="container">
@@ -133,7 +166,7 @@
         </div>
 
         <div class="alert-box">
-            <strong>NOTIS:</strong> Sila masukkan No. MyKad tanpa tanda sempang. Semakan hanya boleh dilakukan sekali sahaja untuk setiap pengguna.
+            <strong>NOTIS PENTING:</strong> Sila masukkan No. MyKad tanpa tanda sempang. Semakan hanya boleh dilakukan sekali sahaja.
         </div>
 
         <input type="text" id="no-ic" placeholder="No. MyKad (Contoh: 950101121234)" maxlength="12">
@@ -173,6 +206,23 @@
             alert("Maaf anda lambat dan kehabisan stok, sila cuba lain kali.");
         }, 3000); 
     }
+
+    // Fungsi untuk buat efek salji
+    document.addEventListener('DOMContentLoaded', () => {
+        const snowContainer = document.getElementById('snow-container');
+        const numberOfSnowflakes = 50; // Bilangan salji
+
+        for (let i = 0; i < numberOfSnowflakes; i++) {
+            const snowflake = document.createElement('i');
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // 2-5 saat
+            snowflake.style.animationDelay = Math.random() * 2 + 's';
+            snowflake.style.width = Math.random() * 5 + 2 + 'px'; // 2-7px
+            snowflake.style.height = snowflake.style.width;
+            snowflake.style.filter = `blur(${Math.random()}px)`; // Sedikit blur untuk realistik
+            snowContainer.appendChild(snowflake);
+        }
+    });
 </script>
 
 </body>
