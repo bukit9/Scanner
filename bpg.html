@@ -6,113 +6,123 @@
     <title>Portal Rasmi Kelab Paginuman Old School</title>
     <style>
         :root {
-            --gov-blue: #001a33; /* Biru lebih gelap */
+            --gov-blue: #001a33;
             --christmas-red: #b30000;
             --christmas-green: #006400;
         }
 
         body { 
             font-family: 'Segoe UI', Arial, sans-serif; 
-            /* Background gelap supaya salji nampak jelas */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+            /* Background Gelap */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
                         url('https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             margin: 0; 
-            color: #333;
-            overflow-x: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
-        /* Salji Slow-Mo & Ditiup Angin */
-        .snow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+        /* Salji Slow-Mo */
+        .snow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .snow i { 
             position: absolute; 
             background: #fff; 
             border-radius: 50%; 
-            opacity: 0.9; 
+            opacity: 0.8; 
             animation: snowfall linear infinite; 
         }
 
         @keyframes snowfall {
             0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
             20% { opacity: 1; }
-            50% { transform: translateY(50vh) translateX(30px); } /* Efek ditiup angin */
-            100% { transform: translateY(100vh) translateX(-20px); opacity: 0; }
+            50% { transform: translateY(50vh) translateX(40px); }
+            100% { transform: translateY(110vh) translateX(-20px); opacity: 0; }
         }
 
         .gov-header {
             background: var(--gov-blue);
             color: white;
             padding: 12px 20px;
-            text-align: left;
             font-size: 11px;
             font-weight: bold;
             border-bottom: 3px solid var(--christmas-red);
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            position: relative;
-            z-index: 10000;
+            z-index: 10;
         }
 
         .container {
-            max-width: 450px;
-            margin: 50px auto;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             padding: 0 15px;
-            position: relative;
-            z-index: 1000;
+            z-index: 5;
         }
 
+        /* KOTAK KACA (Lutsinar supaya nampak salji) */
         .card { 
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.1); /* Lutsinar */
+            backdrop-filter: blur(10px); /* Kesan kabur kaca */
+            -webkit-backdrop-filter: blur(10px);
             padding: 40px 30px; 
-            border-radius: 15px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-radius: 20px; 
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-top: 8px solid var(--christmas-green);
             text-align: center;
+            width: 100%;
+            max-width: 400px;
+            color: white;
         }
 
-        .branding h2 { font-size: 24px; color: var(--gov-blue); margin: 5px 0 30px; font-weight: 900; }
+        .branding h2 { font-size: 24px; color: #fff; margin: 5px 0 30px; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
         .alert-box {
-            background: #fff0f0;
+            background: rgba(179, 0, 0, 0.2); /* Merah lutsinar */
             border-left: 5px solid var(--christmas-red);
             padding: 15px;
             margin-bottom: 25px;
             font-size: 13px;
-            color: #800;
+            color: #ffcccc;
             text-align: left;
         }
 
         input { 
-            width: 100%; padding: 18px; border: 2px solid #eee; border-radius: 8px; 
-            font-size: 20px; box-sizing: border-box; text-align: center; outline: none; 
-            margin-bottom: 20px; font-weight: bold;
+            width: 100%; padding: 18px; border: 1px solid rgba(255,255,255,0.3); 
+            border-radius: 8px; font-size: 20px; box-sizing: border-box; 
+            text-align: center; outline: none; margin-bottom: 20px; 
+            font-weight: bold; background: rgba(255,255,255,0.9); color: #333;
         }
         
-        /* Butang Merah Kekal */
         .btn-semak { 
             width: 100%; padding: 20px; border: none; border-radius: 8px; 
             background: var(--christmas-red); color: white; 
             font-size: 18px; font-weight: 900; cursor: pointer; 
             box-shadow: 0 6px 0 #660000; transition: 0.1s;
+            text-transform: uppercase;
         }
         .btn-semak:active { transform: translateY(4px); box-shadow: 0 2px 0 #660000; }
 
         #loading-area { display: none; margin-top: 30px; }
         .spinner {
-            width: 30px; height: 30px; border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--christmas-red); border-radius: 50%;
+            width: 30px; height: 30px; border: 4px solid rgba(255,255,255,0.1);
+            border-top: 4px solid #fff; border-radius: 50%;
             animation: spin 1s linear infinite; margin: 0 auto 10px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
         .penafian {
-            font-size: 10px; color: #999; margin-top: 40px; text-align: center;
-            border-top: 1px solid #eee; padding-top: 20px; font-style: italic;
+            font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 40px; 
+            text-align: center; border-top: 1px solid rgba(255,255,255,0.1); 
+            padding-top: 20px; font-style: italic;
         }
 
-        footer { text-align: center; font-size: 11px; color: #fff; margin-top: 30px; text-shadow: 1px 1px 3px #000; }
+        footer { text-align: center; font-size: 11px; color: #fff; padding-bottom: 20px; }
     </style>
 </head>
 <body>
@@ -139,18 +149,18 @@
 
         <div id="loading-area">
             <div class="spinner"></div>
-            <div id="loading-text" style="color:var(--christmas-red); font-weight:bold;">Sila sabar bos, sedang semak... <br> kemungkinan besar kau tidak layak ni.</div>
+            <div id="loading-text" style="color:#fff; font-weight:bold; font-size:13px;">Sila sabar bos, sedang semak... <br> kemungkinan besar kau tidak layak ni.</div>
         </div>
 
         <div class="penafian">
             Pihak BPG tidak bertanggungjawab sekiranya mabuk di musim perayaan, merry christmas.
         </div>
     </div>
-
-    <footer>
-        &copy; 2025 KELAB PAGINUMAN OLD SCHOOL (SABAH)
-    </footer>
 </div>
+
+<footer>
+    &copy; 2025 KELAB PAGINUMAN OLD SCHOOL (SABAH)
+</footer>
 
 <script>
     function prosesSemakan() {
@@ -170,16 +180,15 @@
         }, 3000); 
     }
 
-    // Salji Slow-Mo & Angin
+    // Salji Turun
     document.addEventListener('DOMContentLoaded', () => {
         const snowContainer = document.getElementById('snow-container');
-        for (let i = 0; i < 50; i++) {
+        for (let i = 0; i < 60; i++) {
             const snowflake = document.createElement('i');
             snowflake.style.left = Math.random() * 100 + 'vw';
-            // Kelajuan perlahan (5s - 10s)
-            snowflake.style.animationDuration = Math.random() * 5 + 5 + 's';
+            snowflake.style.animationDuration = Math.random() * 5 + 7 + 's';
             snowflake.style.animationDelay = Math.random() * 5 + 's';
-            snowflake.style.width = Math.random() * 5 + 2 + 'px';
+            snowflake.style.width = Math.random() * 6 + 2 + 'px';
             snowflake.style.height = snowflake.style.width;
             snowflake.style.filter = "blur(1px)";
             snowContainer.appendChild(snowflake);
