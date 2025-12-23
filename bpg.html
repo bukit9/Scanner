@@ -6,7 +6,7 @@
     <title>BANTUAN PAGINUMAN (BPG) 2025</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #1e3c72, #2a5298); height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center; }
-        .card { background: white; width: 92%; max-width: 420px; padding: 35px 25px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center; }
+        .card { background: white; width: 92%; max-width: 420px; padding: 40px 25px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.3); text-align: center; }
         
         .logo { width: 110px; margin-bottom: 15px; }
         h1 { font-size: 16px; color: #666; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
@@ -20,12 +20,11 @@
             color: #5c4d00; font-size: 18px; font-weight: 800; cursor: pointer;
             box-shadow: 0 5px 15px rgba(248,216,0,0.3); transition: 0.3s;
         }
+        .btn-semak:active { transform: scale(0.96); }
 
-        #loading-text { margin-top: 20px; font-size: 14px; font-weight: bold; color: #2a5298; display: none; }
+        #loading-text { margin-top: 25px; font-size: 14px; font-weight: bold; color: #2a5298; display: none; line-height: 1.5; }
         
-        .btn-back { display: inline-block; margin-top: 20px; color: #1e3c72; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid #1e3c72; padding: 5px 15px; border-radius: 5px; opacity: 0.7; }
-        
-        .info-box { font-size: 11px; color: #888; margin-top: 35px; text-align: justify; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+        .info-box { font-size: 11px; color: #888; margin-top: 40px; text-align: justify; border-top: 1px solid #f0f0f0; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -42,8 +41,6 @@
 
     <div id="loading-text">Sila sabar bos, sedang semak... <br> kemungkinan besar kau tidak layak ni.</div>
 
-    <center><a href="index.html" class="btn-back">KEMBALI KE SCANNER</a></center>
-
     <div class="info-box">
         <strong>PENAFIAN:</strong> Pihak pengurusan <strong>BANTUAN PAGINUMAN (BPG)</strong> tidak bertanggungjawab atas kegagalan semakan jika maklumat salah.
     </div>
@@ -53,6 +50,8 @@
     function prosesSemakan() {
         let icValue = document.getElementById('no-ic').value;
         let loading = document.getElementById('loading-text');
+        
+        // Logik semakan huruf dan jumlah digit
         let isOnlyNumbers = /^\d+$/.test(icValue);
         
         if (!isOnlyNumbers || icValue.length < 12) {
@@ -60,10 +59,12 @@
             return;
         }
 
+        // Tunjuk loading teks
         loading.style.display = "block";
         
         setTimeout(() => {
             loading.style.display = "none";
+            // Keputusan akhir
             alert("Maaf anda lambat dan kehabisan stok, sila cuba lain kali.");
         }, 3000); 
     }
