@@ -9,7 +9,6 @@
             --gov-blue: #002b5c;
             --gov-light-blue: #eef2f7;
             --gov-gold: #c5a059;
-            --danger: #d93025;
         }
 
         body { 
@@ -19,81 +18,61 @@
             color: #333;
         }
 
-        /* Top Bar Rasmi */
         .gov-header {
             background: var(--gov-blue);
             color: white;
             padding: 10px 20px;
             text-align: left;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             border-bottom: 3px solid var(--gov-gold);
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 40px auto;
-            padding: 0 15px;
-        }
-
-        /* Card Formal */
-        .card { 
-            background: white; 
-            padding: 40px 30px; 
-            border-radius: 8px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid var(--gov-blue);
-        }
-
-        .branding {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .branding h1 { 
-            font-size: 14px; 
-            color: #666; 
-            margin: 0; 
-            text-transform: uppercase; 
             letter-spacing: 1px;
         }
 
-        .branding h2 { 
-            font-size: 22px; 
-            color: var(--gov-blue); 
-            margin: 5px 0; 
-            font-weight: 700;
+        .container {
+            max-width: 480px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
 
-        /* Input Form */
-        .form-label {
-            display: block;
+        .card { 
+            background: white; 
+            padding: 35px 25px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-top: 6px solid var(--gov-blue);
+            text-align: center;
+        }
+
+        .branding h1 { font-size: 13px; color: #888; margin: 0; letter-spacing: 2px; }
+        .branding h2 { font-size: 22px; color: var(--gov-blue); margin: 5px 0 25px; font-weight: 800; }
+
+        .alert-box {
+            background: #fff9db;
+            border-left: 4px solid #fab005;
+            padding: 12px;
+            margin-bottom: 25px;
+            font-size: 12px;
+            color: #664d03;
             text-align: left;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #444;
+            line-height: 1.4;
         }
 
         input { 
             width: 100%; 
-            padding: 15px; 
-            border: 1px solid #ccc; 
+            padding: 16px; 
+            border: 1px solid #ced4da; 
             border-radius: 4px; 
             font-size: 18px; 
             box-sizing: border-box; 
             text-align: center; 
             outline: none; 
             margin-bottom: 20px;
-            background: #f9f9f9;
+            background: #f8f9fa;
         }
         
-        input:focus {
-            border-color: var(--gov-blue);
-            background: #fff;
-        }
+        input:focus { border-color: var(--gov-blue); background: #fff; box-shadow: 0 0 0 3px rgba(0,43,92,0.1); }
 
-        /* Butang Timbul Formal */
         .btn-semak { 
             width: 100%; 
             padding: 16px; 
@@ -105,62 +84,45 @@
             font-weight: bold; 
             cursor: pointer; 
             box-shadow: 0 4px 0 #001a38;
-            transition: 0.1s;
+            transition: 0.2s;
         }
 
-        .btn-semak:active { 
-            transform: translateY(2px); 
-            box-shadow: 0 2px 0 #001a38; 
-        }
+        .btn-semak:active { transform: translateY(2px); box-shadow: 0 2px 0 #001a38; }
 
-        /* Notis Amaran Formal */
-        .alert-box {
-            background: #fff4e5;
-            border-left: 5px solid #ffa000;
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 13px;
-            color: #663c00;
-            text-align: left;
-            line-height: 1.5;
-        }
-
-        /* Loading Area */
-        #loading-area { 
-            display: none; 
-            margin-top: 25px; 
-            text-align: center;
-        }
-
+        #loading-area { display: none; margin-top: 25px; }
         .spinner {
-            width: 30px; height: 30px; 
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid var(--gov-blue); 
-            border-radius: 50%;
-            animation: spin 1s linear infinite; 
-            margin: 0 auto 10px;
+            width: 25px; height: 25px; border: 3px solid #f3f3f3;
+            border-top: 3px solid var(--gov-blue); border-radius: 50%;
+            animation: spin 1s linear infinite; margin: 0 auto 10px;
         }
-
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        #loading-text { 
-            font-size: 14px; 
-            font-weight: 600; 
-            color: var(--gov-blue); 
-        }
+        #loading-text { font-size: 13px; font-weight: 600; color: var(--gov-blue); font-style: italic; }
         
-        footer {
-            text-align: center;
-            font-size: 11px;
+        /* Penafian Tulisan Kecil Sesuai Arahan Bos */
+        .penafian {
+            font-size: 10px;
             color: #999;
             margin-top: 30px;
+            text-align: center;
+            line-height: 1.5;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 10px;
+            color: #bbb;
+            margin-top: 20px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
 <div class="gov-header">
-    PORTAL RASMI KERAJAAN MALAYSIA • BPG ONLINE
+    PORTAL RASMI KERAJAAN MALAYSIA • BPG ONLINE v2.0
 </div>
 
 <div class="container">
@@ -171,11 +133,10 @@
         </div>
 
         <div class="alert-box">
-            <strong>PERHATIAN:</strong> Sila pastikan No. Kad Pengenalan 12-digit dimasukkan tanpa tanda sempang (-). Maklumat yang salah akan menyebabkan semakan gagal.
+            <strong>NOTIS:</strong> Sila masukkan No. MyKad tanpa tanda sempang. Semakan hanya boleh dilakukan sekali sahaja untuk setiap pengguna.
         </div>
 
-        <label class="form-label">No. Kad Pengenalan (MyKad):</label>
-        <input type="text" id="no-ic" placeholder="Contoh: 900101125566" maxlength="12" autocomplete="off">
+        <input type="text" id="no-ic" placeholder="No. MyKad (Contoh: 950101121234)" maxlength="12">
         
         <button class="btn-semak" onclick="prosesSemakan()">SEMAK STATUS SEKARANG</button>
 
@@ -183,10 +144,14 @@
             <div class="spinner"></div>
             <div id="loading-text">Sila sabar bos, sedang semak... <br> kemungkinan besar kau tidak layak ni.</div>
         </div>
+
+        <div class="penafian">
+            Pihak BPG tidak bertanggungjawab sekiranya mabuk di musim perayaan, merry christmas.
+        </div>
     </div>
 
     <footer>
-        &copy; 2025 Hak Cipta Terpelihara - Bahagian Pengurusan Bantuan Paginuman
+        &copy; 2025 Bahagian Pengurusan Bantuan Paginuman (BPG)
     </footer>
 </div>
 
