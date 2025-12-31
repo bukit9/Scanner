@@ -3,206 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Rasmi Kelab Paginuman Old School</title>
+    <title>Semakan Bantuan Paginuman (BPG) 2026</title>
     <style>
-        :root {
-            --gov-blue: #001a33;
-            --christmas-red: #b30000;
-            --christmas-green: #006400;
-        }
-
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
-                        url('https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            margin: 0; 
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+        /* TEMA CHINESE NEW YEAR */
+        body {
+            margin: 0;
+            padding: 0;
             overflow: hidden;
+            background: radial-gradient(circle, #b10000, #4a0000); /* Merah Gelap */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #ffd700;
         }
 
-        /* SALJI DI MUKA DEPAN (Z-Index Paling Tinggi) */
-        .snow { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            pointer-events: none; 
-            z-index: 99999; /* Lapisan paling depan sekali */
-        }
-        
-        .snow i { 
-            position: absolute; 
-            background: #fff; 
-            border-radius: 70%; 
-            opacity: 0.8; 
-            animation: snowfall linear infinite; 
-        }
-
-        @keyframes snowfall {
-            0% { transform: translateY(-10vh) translateX(0); opacity: 0; }
-            20% { opacity: 1; }
-            50% { transform: translateY(50vh) translateX(40px); }
-            100% { transform: translateY(110vh) translateX(-20px); opacity: 0; }
-        }
-
-        .gov-header {
-            background: var(--gov-blue);
-            color: white;
-            padding: 12px 20px;
-            font-size: 11px;
-            font-weight: bold;
-            border-bottom: 3px solid var(--christmas-red);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            z-index: 10;
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
         }
 
         .container {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 15px;
-            z-index: 5;
-        }
-
-        /* Kotak Kaca */
-        .card { 
-            background: rgba(255, 255, 255, 0.12); 
-            backdrop-filter: blur(12px); 
-            -webkit-backdrop-filter: blur(12px);
-            padding: 40px 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-top: 8px solid var(--christmas-green);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            border: 3px solid #ffd700; /* Border Emas */
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
             text-align: center;
+            width: 350px;
+            z-index: 10;
+            position: relative;
+        }
+
+        .logo {
+            width: 150px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 5px #ffd700);
+        }
+
+        h2 {
+            margin-top: 0;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px #000;
+        }
+
+        p {
+            font-size: 0.9em;
+            color: #fff;
+        }
+
+        input[type="text"] {
+            width: 90%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
+            background: #fff;
+            font-size: 16px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        button {
+            background: linear-gradient(to bottom, #ffd700, #b8860b);
+            color: #8b0000;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
             width: 100%;
-            max-width: 400px;
-            color: white;
+            transition: 0.3s;
         }
 
-        .branding h2 { font-size: 24px; color: #fff; margin: 5px 0 30px; font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-
-        .alert-box {
-            background: rgba(179, 0, 0, 0.25);
-            border-left: 5px solid var(--christmas-red);
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 13px;
-            color: #ffcccc;
-            text-align: left;
+        button:hover {
+            background: #fff;
+            color: #ff0000;
+            box-shadow: 0 0 15px #fff;
         }
 
-        input { 
-            width: 100%; padding: 18px; border: 1px solid rgba(255,255,255,0.3); 
-            border-radius: 8px; font-size: 20px; box-sizing: border-box; 
-            text-align: center; outline: none; margin-bottom: 20px; 
-            font-weight: bold; background: rgba(255,255,255,0.95); color: #333;
-        }
-        
-        .btn-semak { 
-            width: 100%; padding: 20px; border: none; border-radius: 8px; 
-            background: var(--christmas-red); color: white; 
-            font-size: 18px; font-weight: 900; cursor: pointer; 
-            box-shadow: 0 6px 0 #660000; transition: 0.1s;
-            text-transform: uppercase;
-        }
-        .btn-semak:active { transform: translateY(4px); box-shadow: 0 2px 0 #660000; }
-
-        #loading-area { display: none; margin-top: 30px; }
-        .spinner {
-            width: 30px; height: 30px; border: 4px solid rgba(255,255,255,0.2);
-            border-top: 4px solid #fff; border-radius: 50%;
-            animation: spin 1s linear infinite; margin: 0 auto 10px;
-        }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
-        .penafian {
-            font-size: 10px; color: rgba(255,255,255,0.6); margin-top: 40px; 
-            text-align: center; border-top: 1px solid rgba(255,255,255,0.1); 
-            padding-top: 20px; font-style: italic;
+        /* LOADING SPINNER */
+        #loader {
+            display: none;
+            margin: 15px auto;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #ffd700;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
         }
 
-        footer { text-align: center; font-size: 11px; color: #fff; padding-bottom: 20px; z-index: 5; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .footer-text {
+            font-size: 12px;
+            margin-top: 20px;
+            color: #ffd700;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
 
-<div class="snow" id="snow-container"></div> 
+    <canvas id="snowCanvas"></canvas>
 
-<div class="gov-header">
-    PORTAL RASMI KELAB PAGINUMAN OLD SCHOOL • BPG ONLINE
-</div>
-
-<div class="container">
-    <div class="card">
-        <div class="branding">
-            <h2>SEMAKAN CUTI KHAS</h2>
-        </div>
-
-        <div class="alert-box">
-            <strong>NOTIS:</strong> Sila masukkan No. MyKad tanpa tanda sempang. Semakan adalah muktamad.
-        </div>
-
-        <input type="text" id="no-ic" placeholder="No. MyKad Ahli" maxlength="12">
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Tiger Beer Logo" class="logo">
         
-        <button class="btn-semak" onclick="prosesSemakan()">SEMAK SEKARANG</button>
-
-        <div id="loading-area">
-            <div class="spinner"></div>
-            <div id="loading-text" style="color:#fff; font-weight:bold; font-size:13px;">Sila sabar bos, sedang semak... <br> kemungkinan besar kau tidak layak ni.</div>
-        </div>
-
-        <div class="penafian">
-            Pihak BPG tidak bertanggungjawab sekiranya mabuk di musim perayaan, merry christmas.
+        <h2>BPG 2026</h2>
+        <p>Sila masukkan No. MyKad untuk semakan bantuan:</p>
+        
+        <input type="text" id="mykad" placeholder="Contoh: 900101125566" maxlength="12">
+        
+        <button onclick="semakBantuan()">SEMAK SEKARANG</button>
+        
+        <div id="loader"></div>
+        
+        <div class="footer-text">
+            🧧 Gong Xi Fa Cai - Huat Ah! 🧧
         </div>
     </div>
-</div>
 
-<footer>
-    &copy; 2025 KELAB PAGINUMAN OLD SCHOOL (SABAH)
-</footer>
+    <script>
+        // --- EFEK HUJAN HURUF 2026 ---
+        const canvas = document.getElementById('snowCanvas');
+        const ctx = canvas.getContext('2d');
 
-<script>
-    function prosesSemakan() {
-        let icValue = document.getElementById('no-ic').value;
-        let loadingArea = document.getElementById('loading-area');
-        
-        if (!/^\d+$/.test(icValue) || icValue.length < 12) {
-            alert("KAU TIDAK LAYAK SEBAB KASI MASUK NO SALAH");
-            return;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const textToFall = "2026";
+
+        function createParticle() {
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 15 + 12,
+                speed: Math.random() * 2 + 1,
+                opacity: Math.random() * 0.8 + 0.2,
+                wind: Math.random() * 0.5 - 0.25
+            };
         }
 
-        loadingArea.style.display = "block";
-        
-        setTimeout(() => {
-            loadingArea.style.display = "none";
-            alert("Maaf anda tidak layak sebab selalu kagutan, sila cuba taim tidak kagutan.");
-        }, 3000); 
-    }
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "bold 18px Arial";
 
-    // Salji Muka Depan
-    document.addEventListener('DOMContentLoaded', () => {
-        const snowContainer = document.getElementById('snow-container');
-        for (let i = 0; i < 70; i++) {
-            const snowflake = document.createElement('i');
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 4 + 6 + 's'; // 6-10 saat (Slow-mo)
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
-            snowflake.style.width = Math.random() * 5 + 2 + 'px';
-            snowflake.style.height = snowflake.style.width;
-            snowflake.style.filter = "blur(0.5px)";
-            snowContainer.appendChild(snowflake);
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`; // Warna Emas
+                ctx.fillText(textToFall, p.x, p.y);
+                
+                p.y += p.speed;
+                p.x += p.wind;
+
+                if (p.y > canvas.height) {
+                    p.y = -30;
+                    p.x = Math.random() * canvas.width;
+                }
+            }
+            requestAnimationFrame(draw);
         }
-    });
-</script>
 
-</body>
-</html>
+        for (let i = 0; i < 60; i++) {
+            particles.push(createParticle());
+        }
+
+        draw();
+
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        // --- LOGIC SEMAKAN ---
+        function semakBantuan() {
+            const mykad = document.getElementById('mykad').value;
+            const loader = document.getElementById('loader');
+
+            if (mykad === "") {
+                alert("Sila masukkan No. MyKad!");
+                return;
+            }
+
+            loader.style.display = "block"; // Tunjuk loading spinner
+
+            setTimeout(function() {
+                loader.style.display = "none"; // Sorok loading
+                alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM.");
+            }, 3000); // Tunggu 3 saat
+        }
