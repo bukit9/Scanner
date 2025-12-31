@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Semakan Bantuan Paginuman (BPG) 2026</title>
+    <title>Semak Cuti Anda 2026</title>
     <style>
-        /* TEMA CHINESE NEW YEAR */
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background: radial-gradient(circle, #b10000, #4a0000); /* Merah Gelap */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: radial-gradient(circle, #d40000, #4a0000);
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,64 +18,59 @@
             color: #ffd700;
         }
 
-        #snowCanvas {
+        #sakuraCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            pointer-events: none;
         }
 
         .container {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border-radius: 15px;
-            border: 3px solid #ffd700; /* Border Emas */
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 4px solid #ffd700;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6);
             text-align: center;
-            width: 350px;
+            width: 380px;
             z-index: 10;
-            position: relative;
-        }
-
-        .logo {
-            width: 150px;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 0 5px #ffd700);
         }
 
         h2 {
-            margin-top: 0;
-            letter-spacing: 2px;
+            font-size: 28px;
+            margin-bottom: 10px;
             text-shadow: 2px 2px #000;
+            letter-spacing: 2px;
         }
 
         p {
-            font-size: 0.9em;
+            font-size: 14px;
             color: #fff;
+            margin-bottom: 25px;
+            line-height: 1.5;
         }
 
         input[type="text"] {
             width: 90%;
-            padding: 12px;
-            margin: 15px 0;
+            padding: 15px;
+            margin-bottom: 20px;
             border: 2px solid #ffd700;
-            border-radius: 5px;
-            background: #fff;
-            font-size: 16px;
+            border-radius: 10px;
+            font-size: 18px;
             text-align: center;
             font-weight: bold;
+            outline: none;
         }
 
         button {
-            background: linear-gradient(to bottom, #ffd700, #b8860b);
+            background: linear-gradient(145deg, #ffd700, #b8860b);
             color: #8b0000;
-            padding: 12px 25px;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
-            font-size: 18px;
+            border-radius: 10px;
+            font-size: 20px;
             font-weight: bold;
             cursor: pointer;
             width: 100%;
@@ -85,19 +79,18 @@
 
         button:hover {
             background: #fff;
-            color: #ff0000;
-            box-shadow: 0 0 15px #fff;
+            transform: scale(1.02);
         }
 
-        /* LOADING SPINNER */
-        #loader {
+        /* NAGA PUSING (DRAGON LOADER) */
+        #loader-container {
             display: none;
-            margin: 15px auto;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid #ffd700;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            margin: 20px 0;
+        }
+
+        .dragon-spinner {
+            font-size: 50px;
+            display: inline-block;
             animation: spin 1s linear infinite;
         }
 
@@ -106,102 +99,107 @@
             100% { transform: rotate(360deg); }
         }
 
-        .footer-text {
-            font-size: 12px;
-            margin-top: 20px;
-            color: #ffd700;
-            opacity: 0.8;
+        .cny-deco {
+            position: absolute;
+            top: -20px;
+            width: 100%;
+            font-size: 30px;
+            left: 0;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="snowCanvas"></canvas>
+    <canvas id="sakuraCanvas"></canvas>
 
     <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Tiger_Beer_logo.svg/1200px-Tiger_Beer_logo.svg.png" alt="Tiger Beer Logo" class="logo">
+        <div class="cny-deco">🧧 🏮 🧧</div>
+        <h2>SEMAK CUTI ANDA</h2>
+        <p>SILA MASUKKAN NO MYKAD UNTUK TUJUAN SEMAKAN CUTI</p>
         
-        <h2>BPG 2026</h2>
-        <p>Sila masukkan No. MyKad untuk semakan bantuan:</p>
+        <input type="text" id="mykad" placeholder="No. MyKad (12 Digit)" maxlength="12">
         
-        <input type="text" id="mykad" placeholder="Contoh: 900101125566" maxlength="12">
+        <button onclick="semakCuti()">SEMAK SEKARANG</button>
         
-        <button onclick="semakBantuan()">SEMAK SEKARANG</button>
-        
-        <div id="loader"></div>
-        
-        <div class="footer-text">
-            🧧 Gong Xi Fa Cai - Huat Ah! 🧧
+        <div id="loader-container">
+            <div class="dragon-spinner">🐉</div>
+            <div style="color: #ffd700; margin-top: 10px; font-weight: bold;">MENYEMAK...</div>
+        </div>
+
+        <div style="margin-top: 25px; font-size: 12px; opacity: 0.7;">
+            🏮 Gong Xi Fa Cai 2026 🏮
         </div>
     </div>
 
     <script>
-        // --- EFEK HUJAN HURUF 2026 ---
-        const canvas = document.getElementById('snowCanvas');
+        // --- EFEK HUJAN SAKURA ---
+        const canvas = document.getElementById('sakuraCanvas');
         const ctx = canvas.getContext('2d');
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let particles = [];
-        const textToFall = "2026";
+        let petals = [];
 
-        function createParticle() {
+        function createPetal() {
             return {
                 x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 15 + 12,
+                y: Math.random() * canvas.height - canvas.height,
+                size: Math.random() * 7 + 5,
                 speed: Math.random() * 2 + 1,
-                opacity: Math.random() * 0.8 + 0.2,
-                wind: Math.random() * 0.5 - 0.25
+                angle: Math.random() * 360,
+                spin: Math.random() * 0.2 - 0.1
             };
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.font = "bold 18px Arial";
+            ctx.fillStyle = "#ffb7c5"; // Warna Pink Sakura
 
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`; // Warna Emas
-                ctx.fillText(textToFall, p.x, p.y);
+            for (let i = 0; i < petals.length; i++) {
+                let p = petals[i];
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
                 
                 p.y += p.speed;
-                p.x += p.wind;
+                p.x += Math.sin(p.angle) * 1;
+                p.angle += p.spin;
 
                 if (p.y > canvas.height) {
-                    p.y = -30;
+                    p.y = -10;
                     p.x = Math.random() * canvas.width;
                 }
             }
             requestAnimationFrame(draw);
         }
 
-        for (let i = 0; i < 60; i++) {
-            particles.push(createParticle());
-        }
-
+        for (let i = 0; i < 50; i++) { petals.push(createPetal()); }
         draw();
 
-        window.addEventListener('resize', function() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        // --- LOGIC SEMAKAN ---
-        function semakBantuan() {
+        // --- LOGIK SEMAKAN ---
+        function semakCuti() {
             const mykad = document.getElementById('mykad').value;
-            const loader = document.getElementById('loader');
+            const loader = document.getElementById('loader-container');
 
-            if (mykad === "") {
-                alert("Sila masukkan No. MyKad!");
+            // 1. Cek jika kosong atau bukan nombor (ic tidak sah)
+            if (mykad === "" || mykad.length < 12 || isNaN(mykad)) {
+                alert("MASUKAN NO IC YANG SAH");
                 return;
             }
 
-            loader.style.display = "block"; // Tunjuk loading spinner
+            // 2. Jika sah, tunjuk Naga Pusing
+            loader.style.display = "block";
 
             setTimeout(function() {
-                loader.style.display = "none"; // Sorok loading
-                alert("MAAF ANDA TIDAK LAYAK, SEBAB TIDAK PANDAI MINUM.");
-            }, 3000); // Tunggu 3 saat
+                loader.style.display = "none";
+                alert("MAAF ANDA TIDAK LAYAK SEBAB SELALU KAGUTAN, SILA CUBA LAGI TAIM TIDAK KAGUTAN");
+            }, 3000); // 3 saat loading
         }
+
+        window.onresize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        };
+    </script>
+</body>
+</html>
