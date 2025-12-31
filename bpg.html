@@ -39,10 +39,10 @@
         }
 
         h2 {
-            font-size: 28px;
+            font-size: 26px;
             margin-bottom: 10px;
             text-shadow: 2px 2px #000;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         p {
@@ -50,6 +50,7 @@
             color: #fff;
             margin-bottom: 25px;
             line-height: 1.5;
+            font-weight: bold;
         }
 
         input[type="text"] {
@@ -62,6 +63,8 @@
             text-align: center;
             font-weight: bold;
             outline: none;
+            background: #fff;
+            color: #333;
         }
 
         button {
@@ -79,19 +82,26 @@
 
         button:hover {
             background: #fff;
-            transform: scale(1.02);
+            transform: scale(1.05);
         }
 
-        /* NAGA PUSING (DRAGON LOADER) */
+        /* LOADING DUA NAGA EMAS */
         #loader-container {
             display: none;
             margin: 20px 0;
         }
 
+        .dragon-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
         .dragon-spinner {
-            font-size: 50px;
+            font-size: 40px;
             display: inline-block;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
+            filter: drop-shadow(0 0 5px #ffd700);
         }
 
         @keyframes spin {
@@ -99,12 +109,9 @@
             100% { transform: rotate(360deg); }
         }
 
-        .cny-deco {
-            position: absolute;
-            top: -20px;
-            width: 100%;
-            font-size: 30px;
-            left: 0;
+        .cny-header {
+            font-size: 24px;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -113,7 +120,7 @@
     <canvas id="sakuraCanvas"></canvas>
 
     <div class="container">
-        <div class="cny-deco">🧧 🏮 🧧</div>
+        <div class="cny-header">🧧 🌸 🧧</div>
         <h2>SEMAK CUTI ANDA</h2>
         <p>SILA MASUKKAN NO MYKAD UNTUK TUJUAN SEMAKAN CUTI</p>
         
@@ -122,58 +129,64 @@
         <button onclick="semakCuti()">SEMAK SEKARANG</button>
         
         <div id="loader-container">
-            <div class="dragon-spinner">🐉</div>
-            <div style="color: #ffd700; margin-top: 10px; font-weight: bold;">MENYEMAK...</div>
+            <div class="dragon-wrapper">
+                <div class="dragon-spinner">🐉</div>
+                <div class="dragon-spinner">🐉</div>
+            </div>
+            <div style="color: #ffd700; margin-top: 10px; font-weight: bold; letter-spacing: 2px;">MENYEMAK...</div>
         </div>
 
-        <div style="margin-top: 25px; font-size: 12px; opacity: 0.7;">
+        <div style="margin-top: 25px; font-size: 12px; opacity: 0.7; color: #ffd700;">
             🏮 Gong Xi Fa Cai 2026 🏮
         </div>
     </div>
 
     <script>
-        // --- EFEK HUJAN SAKURA ---
+        // --- EFEK HUJAN SAKURA & ANGPAO ---
         const canvas = document.getElementById('sakuraCanvas');
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        let petals = [];
+        let elements = [];
+        const items = ["🌸", "🧧"]; // Senarai barang yang jatuh
 
-        function createPetal() {
+        function createItem() {
             return {
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height - canvas.height,
-                size: Math.random() * 7 + 5,
+                text: items[Math.floor(Math.random() * items.length)],
+                size: Math.random() * 20 + 15,
                 speed: Math.random() * 2 + 1,
                 angle: Math.random() * 360,
-                spin: Math.random() * 0.2 - 0.1
+                spin: Math.random() * 0.05 - 0.025
             };
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#ffb7c5"; // Warna Pink Sakura
 
-            for (let i = 0; i < petals.length; i++) {
-                let p = petals[i];
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
+            for (let i = 0; i < elements.length; i++) {
+                let e = elements[i];
+                ctx.font = `${e.size}px Arial`;
+                ctx.save();
+                ctx.translate(e.x, e.y);
+                ctx.rotate(e.angle);
+                ctx.fillText(e.text, 0, 0);
+                ctx.restore();
                 
-                p.y += p.speed;
-                p.x += Math.sin(p.angle) * 1;
-                p.angle += p.spin;
+                e.y += e.speed;
+                e.angle += e.spin;
 
-                if (p.y > canvas.height) {
-                    p.y = -10;
-                    p.x = Math.random() * canvas.width;
+                if (e.y > canvas.height) {
+                    e.y = -20;
+                    e.x = Math.random() * canvas.width;
                 }
             }
             requestAnimationFrame(draw);
         }
 
-        for (let i = 0; i < 50; i++) { petals.push(createPetal()); }
+        for (let i = 0; i < 40; i++) { elements.push(createItem()); }
         draw();
 
         // --- LOGIK SEMAKAN ---
@@ -181,19 +194,19 @@
             const mykad = document.getElementById('mykad').value;
             const loader = document.getElementById('loader-container');
 
-            // 1. Cek jika kosong atau bukan nombor (ic tidak sah)
+            // Cek jika kosong atau bukan 12 digit
             if (mykad === "" || mykad.length < 12 || isNaN(mykad)) {
                 alert("MASUKAN NO IC YANG SAH");
                 return;
             }
 
-            // 2. Jika sah, tunjuk Naga Pusing
+            // Jika sah, tunjuk Naga Emas Berputar
             loader.style.display = "block";
 
             setTimeout(function() {
                 loader.style.display = "none";
                 alert("MAAF ANDA TIDAK LAYAK SEBAB SELALU KAGUTAN, SILA CUBA LAGI TAIM TIDAK KAGUTAN");
-            }, 3000); // 3 saat loading
+            }, 3000); 
         }
 
         window.onresize = () => {
